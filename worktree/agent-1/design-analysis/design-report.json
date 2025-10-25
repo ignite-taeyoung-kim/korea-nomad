@@ -1,0 +1,78 @@
+{
+  "timestamp": "2025-10-21T09:16:48.646Z",
+  "url": "https://nomads.com",
+  "colors": [
+    "text: rgb(0, 0, 0)",
+    "border: rgb(0, 0, 0)",
+    "bg: rgb(251, 250, 248)",
+    "text: rgb(28, 28, 28)",
+    "border: rgb(28, 28, 28)",
+    "bg: rgb(255, 71, 66)",
+    "text: rgb(255, 255, 255)",
+    "border: rgb(255, 255, 255)",
+    "bg: rgb(255, 255, 255)",
+    "text: rgb(255, 71, 66)",
+    "border: rgb(255, 71, 66)",
+    "text: rgb(15, 17, 21)",
+    "border: rgb(15, 17, 21)",
+    "bg: rgb(221, 221, 221)",
+    "text: rgb(73, 73, 73)"
+  ],
+  "typography": {
+    "fonts": [
+      "-apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+      "Nunito, \"Helvetica Neue\", Helvetica, \"sans-serif\""
+    ],
+    "sizes": [
+      "SPAN: 16px",
+      "A: 16px",
+      "SPAN: 8px",
+      "H1: 25.6px",
+      "A: 25.6px",
+      "A: 15.2px",
+      "SPAN: 15.2px",
+      "SPAN: 20px",
+      "A: 15px",
+      "SPAN: 12px",
+      "SPAN: 9px",
+      "H1: 56px",
+      "H3: 21px",
+      "SPAN: 27px",
+      "A: 21px"
+    ]
+  },
+  "layout": {
+    "hasHeader": false,
+    "hasNav": false,
+    "hasMain": false,
+    "hasFooter": false,
+    "headerHeight": 0,
+    "footerHeight": 0
+  },
+  "components": {
+    "count": 0,
+    "structure": "No cards found"
+  },
+  "recommendations": {
+    "colors": [
+      "• Use a modern color palette with primary, secondary, and accent colors",
+      "• Implement consistent color usage across all components",
+      "• Consider dark/light mode support for accessibility"
+    ],
+    "typography": [
+      "• Use modern sans-serif fonts for better readability",
+      "• Maintain clear hierarchy with distinct heading sizes",
+      "• Ensure sufficient contrast ratios for accessibility"
+    ],
+    "layout": [
+      "• Implement responsive grid-based layout",
+      "• Use consistent spacing and padding",
+      "• Create clear visual hierarchy with whitespace"
+    ],
+    "components": [
+      "• Design reusable card components",
+      "• Implement hover/interactive states",
+      "• Use smooth transitions and animations"
+    ]
+  }
+}

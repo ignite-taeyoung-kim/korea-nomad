@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar with neon theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FF10F0, #B026FF);
+  border-radius: 5px;
+  box-shadow: 0 0 10px #FF10F0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #B026FF, #FF10F0);
+  box-shadow: 0 0 15px #FF10F0, 0 0 30px #FF10F0;
+}
+
+/* Neon glow effect utilities */
+.neon-text-pink {
+  color: #FF10F0;
+  text-shadow: 0 0 10px #FF10F0, 0 0 20px #FF10F0, 0 0 30px #FF10F0;
+}
+
+.neon-text-blue {
+  color: #00F0FF;
+  text-shadow: 0 0 10px #00F0FF, 0 0 20px #00F0FF, 0 0 30px #00F0FF;
+}
+
+.neon-text-green {
+  color: #39FF14;
+  text-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14;
+}
+
+.neon-border-pink {
+  border: 2px solid #FF10F0;
+  box-shadow: 0 0 5px #FF10F0, 0 0 20px #FF10F0, inset 0 0 5px #FF10F0;
+}
+
+.neon-border-blue {
+  border: 2px solid #00F0FF;
+  box-shadow: 0 0 5px #00F0FF, 0 0 20px #00F0FF, inset 0 0 5px #00F0FF;
+}
+
+.neon-border-green {
+  border: 2px solid #39FF14;
+  box-shadow: 0 0 5px #39FF14, 0 0 20px #39FF14, inset 0 0 5px #39FF14;
+}
+
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(255, 16, 240, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 16, 240, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}

@@ -37,8 +37,3 @@ yarn-error.log*
 
 # OS
 Thumbs.db
-
-# worktree node_modules 및 env files
-worktree/*/node_modules
-worktree/*/.env.local
-worktree/**/.env.local

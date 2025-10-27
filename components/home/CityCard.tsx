@@ -1,18 +1,61 @@
+'use client'
+
 import Link from 'next/link'
 import { City } from '@/lib/types'
-import { Star, Wifi, Users, Coffee, Zap, Smile, MessageCircle, ArrowRight } from 'lucide-react'
+import { Star, Wifi, Users, Coffee, Zap, Smile, MessageCircle, ArrowRight, Heart, Bookmark } from 'lucide-react'
+import { useFavorite } from '@/hooks/useFavorite'
+import { useBookmark } from '@/hooks/useBookmark'
 
 interface CityCardProps {
   city: City
 }
 
 export default function CityCard({ city }: CityCardProps) {
+  const { isFavorite, toggleFavorite } = useFavorite(city.id)
+  const { isBookmarked, toggleBookmark } = useBookmark(city.id)
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleFavorite()
+  }
+
+  const handleBookmarkClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleBookmark()
+  }
+
   return (
     <Link href={`/cities/${city.id}`}>
       <div className="bg-white border border-gray-200 rounded-lg hover:shadow-lg hover:border-primary-300 transition-all duration-300 overflow-hidden cursor-pointer group">
         {/* Header with emoji and city info */}
         <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-primary-50 to-transparent">
-          <div className="text-4xl mb-3">{city.emoji}</div>
+          <div className="flex items-start justify-between mb-3">
+            <div className="text-4xl">{city.emoji}</div>
+            <div className="flex gap-2">
+              <button
+                onClick={handleFavoriteClick}
+                className="p-1.5 hover:bg-white rounded-lg transition-colors"
+                title={isFavorite ? '좋아요 취소' : '좋아요'}
+              >
+                <Heart
+                  size={20}
+                  className={isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-400 hover:text-red-500'}
+                />
+              </button>
+              <button
+                onClick={handleBookmarkClick}
+                className="p-1.5 hover:bg-white rounded-lg transition-colors"
+                title={isBookmarked ? '북마크 취소' : '북마크'}
+              >
+                <Bookmark
+                  size={20}
+                  className={isBookmarked ? 'fill-blue-500 text-blue-500' : 'text-gray-400 hover:text-blue-500'}
+                />
+              </button>
+            </div>
+          </div>
           <h3 className="text-lg font-bold text-gray-900">{city.name}</h3>
           <p className="text-sm text-gray-600">{city.province}</p>
         </div>

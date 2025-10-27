@@ -3,27 +3,26 @@
 import { regions, sortOptions } from '@/lib/data'
 import { useState } from 'react'
 import { Filter, X } from 'lucide-react'
+import { FilterParams } from '@/lib/types'
 
-export default function FilterSidebar() {
+interface FilterSidebarProps {
+  filters: FilterParams
+  onFiltersChange: (filters: Partial<FilterParams>) => void
+  onReset: () => void
+}
+
+export default function FilterSidebar({ filters, onFiltersChange, onReset }: FilterSidebarProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const [sortBy, setSortBy] = useState('overall')
-  const [selectedRegions, setSelectedRegions] = useState<string[]>([])
-  const [costRange, setCostRange] = useState({ min: 1, max: 3 })
-  const [minSpeed, setMinSpeed] = useState(0)
 
   const toggleRegion = (region: string) => {
-    setSelectedRegions((prev) =>
-      prev.includes(region)
-        ? prev.filter((r) => r !== region)
-        : [...prev, region]
-    )
+    const newRegions = filters.regions.includes(region)
+      ? filters.regions.filter((r) => r !== region)
+      : [...filters.regions, region]
+    onFiltersChange({ regions: newRegions })
   }
 
-  const resetFilters = () => {
-    setSortBy('overall')
-    setSelectedRegions([])
-    setCostRange({ min: 1, max: 3 })
-    setMinSpeed(0)
+  const handleResetClick = () => {
+    onReset()
   }
 
   return (
@@ -71,8 +70,8 @@ export default function FilterSidebar() {
               정렬
             </label>
             <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+              value={filters.sortBy}
+              onChange={(e) => onFiltersChange({ sortBy: e.target.value as FilterParams['sortBy'] })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               {sortOptions.map((option) => (
@@ -93,7 +92,7 @@ export default function FilterSidebar() {
                 <label key={region.value} className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    checked={selectedRegions.includes(region.value)}
+                    checked={filters.regions.includes(region.value)}
                     onChange={() => toggleRegion(region.value)}
                     className="w-4 h-4 accent-primary-600"
                   />
@@ -112,18 +111,20 @@ export default function FilterSidebar() {
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs text-gray-600">최소</span>
-                  <span className="text-sm font-medium text-gray-900">{costRange.min}M</span>
+                  <span className="text-sm font-medium text-gray-900">{filters.costRange.min}M</span>
                 </div>
                 <input
                   type="range"
                   min="1"
                   max="5"
-                  value={costRange.min}
+                  value={filters.costRange.min}
                   onChange={(e) =>
-                    setCostRange((prev) => ({
-                      ...prev,
-                      min: Math.min(Number(e.target.value), prev.max),
-                    }))
+                    onFiltersChange({
+                      costRange: {
+                        ...filters.costRange,
+                        min: Math.min(Number(e.target.value), filters.costRange.max),
+                      },
+                    })
                   }
                   className="w-full accent-primary-600"
                 />
@@ -131,18 +132,20 @@ export default function FilterSidebar() {
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs text-gray-600">최대</span>
-                  <span className="text-sm font-medium text-gray-900">{costRange.max}M</span>
+                  <span className="text-sm font-medium text-gray-900">{filters.costRange.max}M</span>
                 </div>
                 <input
                   type="range"
                   min="1"
                   max="5"
-                  value={costRange.max}
+                  value={filters.costRange.max}
                   onChange={(e) =>
-                    setCostRange((prev) => ({
-                      ...prev,
-                      max: Math.max(Number(e.target.value), prev.min),
-                    }))
+                    onFiltersChange({
+                      costRange: {
+                        ...filters.costRange,
+                        max: Math.max(Number(e.target.value), filters.costRange.min),
+                      },
+                    })
                   }
                   className="w-full accent-primary-600"
                 />
@@ -151,28 +154,55 @@ export default function FilterSidebar() {
           </div>
 
           {/* Speed Filter */}
-          <div className="mb-8">
+          <div className="mb-8 pb-8 border-b border-gray-200">
             <label className="block text-sm font-semibold text-gray-900 mb-3">
               최소 인터넷 속도
             </label>
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs text-gray-600">Mbps</span>
-              <span className="text-sm font-medium text-gray-900">{minSpeed}</span>
+              <span className="text-sm font-medium text-gray-900">{filters.minSpeed}</span>
             </div>
             <input
               type="range"
               min="0"
               max="1000"
               step="50"
-              value={minSpeed}
-              onChange={(e) => setMinSpeed(Number(e.target.value))}
+              value={filters.minSpeed}
+              onChange={(e) => onFiltersChange({ minSpeed: Number(e.target.value) })}
               className="w-full accent-primary-600"
             />
           </div>
 
+          {/* User Interaction Filters */}
+          <div className="mb-8">
+            <label className="block text-sm font-semibold text-gray-900 mb-3">
+              관심 도시
+            </label>
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={filters.showFavorites ?? false}
+                  onChange={(e) => onFiltersChange({ showFavorites: e.target.checked })}
+                  className="w-4 h-4 accent-primary-600"
+                />
+                <span className="text-sm text-gray-700">좋아요한 도시만</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={filters.showBookmarks ?? false}
+                  onChange={(e) => onFiltersChange({ showBookmarks: e.target.checked })}
+                  className="w-4 h-4 accent-primary-600"
+                />
+                <span className="text-sm text-gray-700">북마크한 도시만</span>
+              </label>
+            </div>
+          </div>
+
           {/* Reset Button */}
           <button
-            onClick={resetFilters}
+            onClick={handleResetClick}
             className="w-full px-4 py-2 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm"
           >
             초기화

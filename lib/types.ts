@@ -117,3 +117,31 @@ export interface UserProfile {
   avatar_url?: string
   created_at: string
 }
+
+// Filter option interfaces
+export interface FilterOption {
+  label: string
+  value: string
+  icon?: string
+}
+
+export interface BudgetOption extends FilterOption {
+  range: { min: number; max: number }
+}
+
+export interface RegionOption extends FilterOption {}
+
+export interface EnvironmentOption extends FilterOption {}
+
+export interface SeasonOption extends FilterOption {}
+
+// Props interface for FilterSelect component
+export interface FilterSelectProps {
+  label: string
+  value: string
+  options: FilterOption[]
+  onChange: (value: string) => void
+  placeholder?: string
+  icon?: React.ReactNode
+  className?: string
+}

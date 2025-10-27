@@ -34,6 +34,8 @@ export interface City {
   work_score: number
   quality_score: number
   reviews_count: number
+  likes_count?: number
+  dislikes_count?: number
   description?: string
   image_url?: string
   gallery_images?: string[]

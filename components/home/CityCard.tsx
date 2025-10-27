@@ -28,33 +28,11 @@ export default function CityCard({ city }: CityCardProps) {
 
   return (
     <Link href={`/cities/${city.id}`}>
-      <div className="bg-white border border-gray-200 rounded-lg hover:shadow-lg hover:border-primary-300 transition-all duration-300 overflow-hidden cursor-pointer group">
+      <div className="bg-white border border-gray-200 rounded-lg hover:shadow-lg hover:border-primary-300 transition-all duration-300 overflow-hidden cursor-pointer group flex flex-col">
         {/* Header with emoji and city info */}
         <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-primary-50 to-transparent">
           <div className="flex items-start justify-between mb-3">
             <div className="text-4xl">{city.emoji}</div>
-            <div className="flex gap-2">
-              <button
-                onClick={handleFavoriteClick}
-                className="p-1.5 hover:bg-white rounded-lg transition-colors"
-                title={isFavorite ? '좋아요 취소' : '좋아요'}
-              >
-                <Heart
-                  size={20}
-                  className={isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-400 hover:text-red-500'}
-                />
-              </button>
-              <button
-                onClick={handleBookmarkClick}
-                className="p-1.5 hover:bg-white rounded-lg transition-colors"
-                title={isBookmarked ? '북마크 취소' : '북마크'}
-              >
-                <Bookmark
-                  size={20}
-                  className={isBookmarked ? 'fill-blue-500 text-blue-500' : 'text-gray-400 hover:text-blue-500'}
-                />
-              </button>
-            </div>
           </div>
           <h3 className="text-lg font-bold text-gray-900">{city.name}</h3>
           <p className="text-sm text-gray-600">{city.province}</p>
@@ -86,6 +64,35 @@ export default function CityCard({ city }: CityCardProps) {
         <div className="px-6 py-4 border-b border-gray-100 flex items-center gap-2 text-sm text-gray-600">
           <MessageCircle size={14} />
           <span>{city.reviews_count}개 리뷰</span>
+        </div>
+
+        {/* Likes and Dislikes Section */}
+        <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+          {/* Likes - Left */}
+          <button
+            onClick={handleFavoriteClick}
+            className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            title={isFavorite ? '좋아요 취소' : '좋아요'}
+          >
+            <Heart
+              size={18}
+              className={isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-400 hover:text-red-500'}
+            />
+            <span className="text-sm font-semibold text-gray-700">{city.likes_count || 0}</span>
+          </button>
+
+          {/* Dislikes - Right */}
+          <button
+            onClick={handleBookmarkClick}
+            className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            title={isBookmarked ? '북마크 취소' : '북마크'}
+          >
+            <span className="text-sm font-semibold text-gray-700">{city.dislikes_count || 0}</span>
+            <Bookmark
+              size={18}
+              className={isBookmarked ? 'fill-blue-500 text-blue-500' : 'text-gray-400 hover:text-blue-500'}
+            />
+          </button>
         </div>
 
         {/* Action Button */}

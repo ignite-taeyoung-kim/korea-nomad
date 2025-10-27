@@ -14,6 +14,8 @@ export const cities: City[] = [
     work_score: 9.5,
     quality_score: 8.3,
     reviews_count: 245,
+    likes_count: 342,
+    dislikes_count: 28,
     description: '한국의 중심, 가장 많은 노마드가 활동하는 도시',
     gallery_images: [
       'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500',
@@ -47,6 +49,8 @@ export const cities: City[] = [
     work_score: 7.8,
     quality_score: 8.9,
     reviews_count: 156,
+    likes_count: 287,
+    dislikes_count: 19,
     description: '바다와 산이 어우러진 평화로운 도시',
     gallery_images: [
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500',
@@ -80,6 +84,8 @@ export const cities: City[] = [
     work_score: 7.5,
     quality_score: 8.7,
     reviews_count: 128,
+    likes_count: 256,
+    dislikes_count: 12,
     description: '문화와 전통이 살아있는 매력적인 도시',
     gallery_images: [
       'https://images.unsplash.com/photo-1583697162222-aebb256cb406?w=500',
@@ -113,6 +119,8 @@ export const cities: City[] = [
     work_score: 8.2,
     quality_score: 7.8,
     reviews_count: 184,
+    likes_count: 298,
+    dislikes_count: 24,
     description: '대한민국 제2의 도시, 활기찬 분위기',
     gallery_images: [
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500',
@@ -146,6 +154,8 @@ export const cities: City[] = [
     work_score: 7.2,
     quality_score: 7.6,
     reviews_count: 92,
+    likes_count: 178,
+    dislikes_count: 15,
     description: '저렴한 생활비와 친절한 지역민',
     gallery_images: [
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500',
@@ -179,6 +189,8 @@ export const cities: City[] = [
     work_score: 8.0,
     quality_score: 9.1,
     reviews_count: 167,
+    likes_count: 312,
+    dislikes_count: 18,
     description: '아름다운 자연과 함께하는 노마드 생활',
     gallery_images: [
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500',
@@ -212,6 +224,8 @@ export const cities: City[] = [
     work_score: 7.0,
     quality_score: 8.2,
     reviews_count: 68,
+    likes_count: 142,
+    dislikes_count: 9,
     description: '예술의 도시, 창의적인 분위기',
     gallery_images: [
       'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=500',
@@ -245,6 +259,8 @@ export const cities: City[] = [
     work_score: 7.3,
     quality_score: 7.9,
     reviews_count: 75,
+    likes_count: 156,
+    dislikes_count: 11,
     description: '과학과 기술의 도시, 미래 지향적',
     gallery_images: [
       'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500',

@@ -1,3 +1,26 @@
+export interface Activity {
+  id: string
+  name: string
+  category: 'food' | 'activity' | 'nature' | 'culture' | 'shopping'
+  description: string
+  icon: string
+}
+
+export interface Tip {
+  id: string
+  title: string
+  description: string
+  category: 'transport' | 'food' | 'culture' | 'safety' | 'accommodation'
+  icon: string
+}
+
+export interface Weather {
+  temperature: number
+  condition: string
+  icon: string
+  humidity: number
+}
+
 export interface City {
   id: string
   name: string
@@ -13,6 +36,14 @@ export interface City {
   reviews_count: number
   description?: string
   image_url?: string
+  gallery_images?: string[]
+  activities?: Activity[]
+  tips?: Tip[]
+  weather?: Weather
+  currency?: {
+    code: string
+    exchange_rate: number
+  }
 }
 
 export interface User {

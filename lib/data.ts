@@ -15,6 +15,24 @@ export const cities: City[] = [
     quality_score: 8.3,
     reviews_count: 245,
     description: '한국의 중심, 가장 많은 노마드가 활동하는 도시',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500',
+      'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500',
+      'https://images.unsplash.com/photo-1523482580672-f400141e6155?w=500',
+    ],
+    activities: [
+      { id: 'a1', name: '경주시 불국사', category: 'culture', description: '유네스코 세계유산 불국사 방문', icon: '🏯' },
+      { id: 'a2', name: '명동 쇼핑', category: 'shopping', description: '유명 쇼핑 거리에서 최신 유행 제품 구매', icon: '🛍️' },
+      { id: 'a3', name: '한강 공원 자전거', category: 'activity', description: '한강공원에서 자전거 타기', icon: '🚴' },
+      { id: 'a4', name: '한옥 마을 투어', category: 'culture', description: '북촌 한옥마을 전통 문화 체험', icon: '🏘️' },
+    ],
+    tips: [
+      { id: 't1', title: '지하철 교통카드', description: 'T-money 카드로 지하철, 버스, 편의점 결제', category: 'transport', icon: '🚇' },
+      { id: 't2', title: '밤 문화 활동', description: '서울은 밤 문화가 발달되어 있고, 카페와 바가 늦게까지 운영됨', category: 'culture', icon: '🌙' },
+      { id: 't3', title: '편의점 음식', description: 'GS25, CU, 이마트24 등 24시간 편의점에서 저렴한 식사', category: 'food', icon: '🍜' },
+    ],
+    weather: { temperature: 15, condition: 'Partly Cloudy', icon: '⛅', humidity: 65 },
+    currency: { code: 'KRW', exchange_rate: 1200 },
   },
   {
     id: '2',
@@ -30,6 +48,24 @@ export const cities: City[] = [
     quality_score: 8.9,
     reviews_count: 156,
     description: '바다와 산이 어우러진 평화로운 도시',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500',
+      'https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=500',
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500',
+    ],
+    activities: [
+      { id: 'a1', name: '정동진 해돋이', category: 'nature', description: '해맞이열차를 타고 정동진에서 일출 관상', icon: '🌅' },
+      { id: 'a2', name: '오죽헌 방문', category: 'culture', description: '신사임당의 생가 오죽헌에서 한국 전통 문화 체험', icon: '🎋' },
+      { id: 'a3', name: '강릉 해변 산책', category: 'activity', description: '경포 해변에서 여유로운 산책', icon: '🏖️' },
+      { id: 'a4', name: '커피거리 투어', category: 'food', description: '강릉의 유명한 커피거리에서 로컬 카페 방문', icon: '☕' },
+    ],
+    tips: [
+      { id: 't1', title: '해맞이열차', description: '겨울 시즌에 운영되는 해맞이열차 예약 필수', category: 'transport', icon: '🚂' },
+      { id: 't2', title: '현지 식재료', description: '강릉 오징어순대, 초당순두부 등 지역 맛있는 음식 추천', category: 'food', icon: '🦑' },
+      { id: 't3', title: '계절별 활동', description: '여름 물놀이, 겨울 스키, 봄 벚꽃 등 계절마다 다른 매력', category: 'culture', icon: '🌸' },
+    ],
+    weather: { temperature: 12, condition: 'Rainy', icon: '🌧️', humidity: 78 },
+    currency: { code: 'KRW', exchange_rate: 1200 },
   },
   {
     id: '3',
@@ -45,6 +81,24 @@ export const cities: City[] = [
     quality_score: 8.7,
     reviews_count: 128,
     description: '문화와 전통이 살아있는 매력적인 도시',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1583697162222-aebb256cb406?w=500',
+      'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=500',
+      'https://images.unsplash.com/photo-1571898868541-f48e36766d5e?w=500',
+    ],
+    activities: [
+      { id: 'a1', name: '한옥마을 탐방', category: 'culture', description: '전주 한옥마을에서 전통 건축 감상 및 사진촬영', icon: '📸' },
+      { id: 'a2', name: '전주 비빔밥 체험', category: 'food', description: '전주 비빔밥 맛집투어 및 요리 클래스', icon: '🍚' },
+      { id: 'a3', name: '오목대 야경', category: 'nature', description: '오목대에서 보는 전주 야경', icon: '🌃' },
+      { id: 'a4', name: '경기전 방문', category: 'culture', description: '조선 왕실의 역사를 담은 경기전 관광', icon: '🏰' },
+    ],
+    tips: [
+      { id: 't1', title: '한옥마을 투어', description: '가이드 투어로 더 깊이 있는 역사 학습', category: 'culture', icon: '👨‍🏫' },
+      { id: 't2', title: '야경 명소', description: '저녁 시간대 오목대에서의 야경이 최고', category: 'culture', icon: '🌉' },
+      { id: 't3', title: '전통 음식', description: '침채, 비빔밥, 콩나물국밥 등 전주 특산 음식 필수', category: 'food', icon: '🍜' },
+    ],
+    weather: { temperature: 18, condition: 'Clear', icon: '☀️', humidity: 55 },
+    currency: { code: 'KRW', exchange_rate: 1200 },
   },
   {
     id: '4',
@@ -60,6 +114,24 @@ export const cities: City[] = [
     quality_score: 7.8,
     reviews_count: 184,
     description: '대한민국 제2의 도시, 활기찬 분위기',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500',
+      'https://images.unsplash.com/photo-1510344674702-092f90ee6b7b?w=500',
+      'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=500',
+    ],
+    activities: [
+      { id: 'a1', name: '해운대 해변', category: 'nature', description: '부산의 유명한 해변에서 해수욕 및 수상 스포츠', icon: '🏄' },
+      { id: 'a2', name: '광안리 야경', category: 'nature', description: '광안대교의 야경과 해변에서의 로맨틱한 시간', icon: '🌃' },
+      { id: 'a3', name: '감천문화마을', category: 'culture', description: '알록달록한 집들이 가득한 감천문화마을 탐방', icon: '🏘️' },
+      { id: 'a4', name: '부산 해산물', category: 'food', description: '남포동 횟집거리에서 신선한 회 및 해산물 맛보기', icon: '🦐' },
+    ],
+    tips: [
+      { id: 't1', title: '대중교통', description: '부산 1호선 등 발달된 지하철 네트워크', category: 'transport', icon: '🚇' },
+      { id: 't2', title: '야식문화', description: '늦은 밤까지 영업하는 식당과 카페가 풍부', category: 'food', icon: '🌙' },
+      { id: 't3', title: '여행 명소', description: '해운대, 광안리, 감천마을 등 관광지 밀집', category: 'culture', icon: '🗺️' },
+    ],
+    weather: { temperature: 17, condition: 'Sunny', icon: '☀️', humidity: 60 },
+    currency: { code: 'KRW', exchange_rate: 1200 },
   },
   {
     id: '5',
@@ -75,6 +147,24 @@ export const cities: City[] = [
     quality_score: 7.6,
     reviews_count: 92,
     description: '저렴한 생활비와 친절한 지역민',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500',
+      'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500',
+      'https://images.unsplash.com/photo-1571898868541-f48e36766d5e?w=500',
+    ],
+    activities: [
+      { id: 'a1', name: '팔공산 트래킹', category: 'nature', description: '자연을 품은 팔공산에서의 하이킹 및 경치 감상', icon: '⛰️' },
+      { id: 'a2', name: '대구 한약거리', category: 'culture', description: '동인동 약령시에서 한약 및 전통 의약품 구경', icon: '🌿' },
+      { id: 'a3', name: '닝크 기차마을', category: 'activity', description: '지역 예술가의 작품이 가득한 아트 스페이스 방문', icon: '🚂' },
+      { id: 'a4', name: '대구 음식 투어', category: 'food', description: '찜닭, 우육면 등 대구 대표 음식 맛보기', icon: '🍗' },
+    ],
+    tips: [
+      { id: 't1', title: '저렴한 생활비', description: '서울보다 훨씬 저렴한 식비와 숙박비', category: 'accommodation', icon: '💰' },
+      { id: 't2', title: '친절한 사람들', description: '지역민의 따뜻한 환영과 도움을 받을 수 있음', category: 'culture', icon: '👋' },
+      { id: 't3', title: '음식 문화', description: '전통 한정식부터 현대 카페까지 다양한 음식 문화', category: 'food', icon: '🍽️' },
+    ],
+    weather: { temperature: 20, condition: 'Clear', icon: '☀️', humidity: 50 },
+    currency: { code: 'KRW', exchange_rate: 1200 },
   },
   {
     id: '6',
@@ -90,6 +180,24 @@ export const cities: City[] = [
     quality_score: 9.1,
     reviews_count: 167,
     description: '아름다운 자연과 함께하는 노마드 생활',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500',
+      'https://images.unsplash.com/photo-1473496169865-658ba7c44d8a?w=500',
+    ],
+    activities: [
+      { id: 'a1', name: '한라산 트래킹', category: 'nature', description: '제주도의 최고봉 한라산에서의 등산 및 자연 경험', icon: '⛰️' },
+      { id: 'a2', name: '유명 해변 투어', category: 'activity', description: '협재 해변, 금모래 해변, 사주해변 등 제주의 아름다운 해변 방문', icon: '🏖️' },
+      { id: 'a3', name: '제주 흑돼지 맛집', category: 'food', description: '제주의 명물 흑돼지 구워먹기 및 지역 음식 체험', icon: '🐷' },
+      { id: 'a4', name: '오름 탐방', category: 'nature', description: '성산 일출봉, 용머리 해안 등 독특한 화산 지형 탐방', icon: '🌋' },
+    ],
+    tips: [
+      { id: 't1', title: '계절별 날씨', description: '겨울에는 추우므로 따뜻한 옷 준비, 여름에는 햇빛 대비 필요', category: 'safety', icon: '🌤️' },
+      { id: 't2', title: '교통 수단', description: '렌터카 이용 추천, 버스는 있지만 도시보다 시간이 많이 걸림', category: 'transport', icon: '🚗' },
+      { id: 't3', title: '로컬 음식', description: '검은콩국수, 갈치구이, 옝니 등 제주만의 특별한 음식 체험', category: 'food', icon: '🍜' },
+    ],
+    weather: { temperature: 16, condition: 'Partly Cloudy', icon: '⛅', humidity: 72 },
+    currency: { code: 'KRW', exchange_rate: 1200 },
   },
   {
     id: '7',
@@ -105,6 +213,24 @@ export const cities: City[] = [
     quality_score: 8.2,
     reviews_count: 68,
     description: '예술의 도시, 창의적인 분위기',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=500',
+      'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500',
+      'https://images.unsplash.com/photo-1578301978162-7aae4d755744?w=500',
+    ],
+    activities: [
+      { id: 'a1', name: '광주 미술관', category: 'culture', description: '광주 국립미술관에서 한국 및 세계 미술작품 감상', icon: '🎨' },
+      { id: 'a2', name: '양림동 예술거리', category: 'culture', description: '무장애 산책로와 갤러리, 카페가 있는 예술 지구 탐방', icon: '🖼️' },
+      { id: 'a3', name: '동명동 음식문화거리', category: 'food', description: '광주의 향로 요리, 중국집, 카페 등 다양한 음식 체험', icon: '🥡' },
+      { id: 'a4', name: '광주 비엔날레 정원', category: 'activity', description: '아트 설치미술과 정원을 즐기는 산책 코스', icon: '🌸' },
+    ],
+    tips: [
+      { id: 't1', title: '예술 문화', description: '광주 비엔날레, 미술관 전시 등 문화 행사가 자주 열림', category: 'culture', icon: '🎭' },
+      { id: 't2', title: '저렴한 물가', description: '타 지역 대비 매우 저렴한 식비와 숙박비', category: 'accommodation', icon: '💰' },
+      { id: 't3', title: '로컬 음식 추천', description: '광주식 나주곰탕, 광주의 향로, 수제 떡 등 지역 음식 필수', category: 'food', icon: '🍲' },
+    ],
+    weather: { temperature: 19, condition: 'Clear', icon: '☀️', humidity: 58 },
+    currency: { code: 'KRW', exchange_rate: 1200 },
   },
   {
     id: '8',
@@ -120,6 +246,24 @@ export const cities: City[] = [
     quality_score: 7.9,
     reviews_count: 75,
     description: '과학과 기술의 도시, 미래 지향적',
+    gallery_images: [
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500',
+      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500',
+      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500',
+    ],
+    activities: [
+      { id: 'a1', name: '국립중앙과학관', category: 'culture', description: '최첨단 과학기술을 경험할 수 있는 과학관 방문', icon: '🔬' },
+      { id: 'a2', name: '엑스포 과학공원', category: 'activity', description: '대전 엑스포 기념 공원에서의 산책 및 과학 전시', icon: '🎡' },
+      { id: 'a3', name: '대전 음식 투어', category: 'food', description: '계룡산 닭계탕, 대전식 우동 등 지역 음식 체험', icon: '🍗' },
+      { id: 'a4', name: '유성온천', category: 'nature', description: '유성호와 온천에서의 힐링 및 스파 체험', icon: '♨️' },
+    ],
+    tips: [
+      { id: 't1', title: '과학 문화', description: '카이스트, 국립중앙과학관 등 과학 관련 시설이 풍부', category: 'culture', icon: '🧪' },
+      { id: 't2', title: '교통 편의성', description: '대전역, 중부 고속도로 등 교통 교통 중심지로 이동 편리', category: 'transport', icon: '🚄' },
+      { id: 't3', title: '온천과 휴식', description: '유성온천에서의 온천욕 및 스파는 업무 스트레스 해소에 최고', category: 'accommodation', icon: '🧘' },
+    ],
+    weather: { temperature: 18, condition: 'Clear', icon: '☀️', humidity: 62 },
+    currency: { code: 'KRW', exchange_rate: 1200 },
   },
 ]
 

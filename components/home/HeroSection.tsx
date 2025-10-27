@@ -1,11 +1,16 @@
 'use client'
 
-import { stats } from '@/lib/data'
+import { stats, budgetOptions, regions, environmentOptions, seasonOptions } from '@/lib/data'
 import { Search, Filter } from 'lucide-react'
 import { useState } from 'react'
+import FilterSelect from './FilterSelect'
 
 export default function HeroSection() {
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedBudget, setSelectedBudget] = useState('')
+  const [selectedRegion, setSelectedRegion] = useState('')
+  const [selectedEnvironment, setSelectedEnvironment] = useState('')
+  const [selectedSeason, setSelectedSeason] = useState('')
 
   return (
     <div className="bg-gradient-to-br from-primary-50 via-white to-blue-50 py-12 sm:py-16 lg:py-20 border-b border-gray-100">
@@ -41,6 +46,42 @@ export default function HeroSection() {
             icon="📝"
             label="작성된 리뷰"
             value={`${stats.total_reviews.toLocaleString('ko-KR')}개`}
+          />
+        </div>
+
+        {/* Filter Select Buttons */}
+        <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          <FilterSelect
+            label="예산"
+            value={selectedBudget}
+            options={budgetOptions}
+            onChange={setSelectedBudget}
+            placeholder="예산 선택"
+            icon="💰"
+          />
+          <FilterSelect
+            label="지역"
+            value={selectedRegion}
+            options={regions}
+            onChange={setSelectedRegion}
+            placeholder="지역 선택"
+            icon="📍"
+          />
+          <FilterSelect
+            label="환경"
+            value={selectedEnvironment}
+            options={environmentOptions}
+            onChange={setSelectedEnvironment}
+            placeholder="환경 선택"
+            icon="🌍"
+          />
+          <FilterSelect
+            label="계절"
+            value={selectedSeason}
+            options={seasonOptions}
+            onChange={setSelectedSeason}
+            placeholder="계절 선택"
+            icon="📅"
           />
         </div>
 

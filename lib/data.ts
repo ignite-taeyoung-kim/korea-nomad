@@ -805,3 +805,25 @@ export const currentUser: UserProfile = {
   avatar_url: 'https://api.dicebear.com/7.x/avataaars/svg?seed=nomad123',
   created_at: '2024-10-15',
 }
+
+// Hero section filter options
+export const budgetOptions = [
+  { label: '💰 100만원 이하', value: 'under-1m', icon: '💰' },
+  { label: '💰 100만~200만원', value: '1m-2m', icon: '💰' },
+  { label: '💰 200만~300만원', value: '2m-3m', icon: '💰' },
+  { label: '💰 300만원 이상', value: 'over-3m', icon: '💰' },
+]
+
+export const environmentOptions = [
+  { label: '🏙️ 도시', value: 'urban', icon: '🏙️' },
+  { label: '🌳 시골', value: 'rural', icon: '🌳' },
+  { label: '🏖️ 해변', value: 'coastal', icon: '🏖️' },
+  { label: '⛰️ 산지', value: 'mountain', icon: '⛰️' },
+]
+
+export const seasonOptions = [
+  { label: '🌸 봄', value: 'spring', icon: '🌸' },
+  { label: '☀️ 여름', value: 'summer', icon: '☀️' },
+  { label: '🍂 가을', value: 'autumn', icon: '🍂' },
+  { label: '❄️ 겨울', value: 'winter', icon: '❄️' },
+]

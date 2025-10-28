@@ -3,22 +3,50 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { City } from '@/lib/types'
-import { cities } from '@/lib/data'
-import { getBookmarks, removeBookmark } from '@/lib/storage'
+import { fetchBookmarkedCities } from '@/lib/supabase/queries'
+import { useUserProfile } from '@/hooks/useUserProfile'
 import { Bookmark } from 'lucide-react'
 
 export default function MyBookmarks() {
+  const { user, loading: userLoading } = useUserProfile()
   const [bookmarkedCities, setBookmarkedCities] = useState<City[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const bookmarkIds = getBookmarks()
-    const marked = cities.filter((city) => bookmarkIds.includes(city.id))
-    setBookmarkedCities(marked)
-  }, [])
+    const loadBookmarks = async () => {
+      if (!user?.id) {
+        setIsLoading(false)
+        return
+      }
+
+      try {
+        const cities = await fetchBookmarkedCities(user.id)
+        setBookmarkedCities(cities)
+      } catch (error) {
+        console.error('북마크 조회 오류:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    if (!userLoading) {
+      loadBookmarks()
+    }
+  }, [user, userLoading])
 
   const handleRemoveBookmark = (cityId: string) => {
-    removeBookmark(cityId)
+    // The useBookmark hook handles the Supabase deletion
+    // Just update the local state
     setBookmarkedCities((prev) => prev.filter((city) => city.id !== cityId))
+  }
+
+  if (isLoading || userLoading) {
+    return (
+      <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+        <p className="text-gray-600 mt-4">데이터 로딩 중...</p>
+      </div>
+    )
   }
 
   if (bookmarkedCities.length === 0) {

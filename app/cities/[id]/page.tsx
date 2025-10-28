@@ -1,6 +1,6 @@
 'use client'
 
-import { cities } from '@/lib/data'
+import { fetchCityById, fetchCities } from '@/lib/supabase/queries'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, Star, Users, Wifi, Coffee, MapPin, ChevronLeft, ChevronRight, X, Share2, Copy, Check } from 'lucide-react'
 import Link from 'next/link'
@@ -20,6 +20,7 @@ export default function CityDetailPage({ params }: Props) {
   const routerParams = useParams()
   const id = routerParams.id as string
   const [city, setCity] = useState<City | null>(null)
+  const [allCities, setAllCities] = useState<City[]>([])
   const [selectedImageIdx, setSelectedImageIdx] = useState<number | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [showShareMenu, setShowShareMenu] = useState(false)
@@ -28,11 +29,23 @@ export default function CityDetailPage({ params }: Props) {
   const currentUrl = typeof window !== 'undefined' ? window.location.href : ''
 
   useEffect(() => {
-    const foundCity = cities.find((c) => c.id === id)
-    if (foundCity) {
-      setCity(foundCity)
+    const loadCityData = async () => {
+      try {
+        const foundCity = await fetchCityById(id)
+        const allCitiesData = await fetchCities()
+
+        if (foundCity) {
+          setCity(foundCity)
+          setAllCities(allCitiesData)
+        }
+      } catch (error) {
+        console.error('도시 데이터 조회 오류:', error)
+      } finally {
+        setIsLoading(false)
+      }
     }
-    setIsLoading(false)
+
+    loadCityData()
   }, [id])
 
   // 키보드 네비게이션
@@ -463,7 +476,7 @@ export default function CityDetailPage({ params }: Props) {
             <div className="h-1 w-16 bg-gradient-to-r from-primary-500 to-primary-400 rounded-full mt-2" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {cities
+            {allCities
               .filter((c) => c.id !== city.id)
               .slice(0, 3)
               .map((relatedCity) => (

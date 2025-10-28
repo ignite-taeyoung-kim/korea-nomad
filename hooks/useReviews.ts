@@ -2,104 +2,82 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { Review } from '@/lib/types'
-import {
-  getReviewsForCity,
-  addReview,
-  updateReview,
-  deleteReview,
-  getAverageRating,
-  getReviewsByDate,
-  getReviewsByRating,
-} from '@/lib/reviewStorage'
+import { fetchReviewsByCityId } from '@/lib/supabase/queries'
 
 interface UseReviewsReturn {
   reviews: Review[]
   averageRating: number
-  addNewReview: (
-    review: Omit<Review, 'id'>
-  ) => void
-  updateExistingReview: (
-    reviewId: string,
-    updates: Partial<Omit<Review, 'id' | 'user_id' | 'city_id' | 'created_at'>>
-  ) => void
-  deleteExistingReview: (reviewId: string) => void
-  getReviewsByDate: () => Review[]
-  getReviewsByRating: () => Review[]
   isLoading: boolean
+  error: string | null
+  refetch: () => Promise<void>
+  sortedByDate: () => Review[]
+  sortedByRating: () => Review[]
 }
 
 export function useReviews(cityId: string): UseReviewsReturn {
   const [reviews, setReviews] = useState<Review[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   // Load reviews on mount or when cityId changes
   useEffect(() => {
-    setIsLoading(true)
-    const loadedReviews = getReviewsForCity(cityId)
-    setReviews(loadedReviews)
-    setIsLoading(false)
+    const loadReviews = async () => {
+      try {
+        setIsLoading(true)
+        setError(null)
+        const loadedReviews = await fetchReviewsByCityId(cityId)
+        setReviews(loadedReviews)
+      } catch (err) {
+        console.error('리뷰 조회 오류:', err)
+        setError('리뷰를 가져올 수 없습니다')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadReviews()
   }, [cityId])
 
-  const addNewReview = useCallback(
-    (review: Omit<Review, 'id'>) => {
-      const newReview = addReview(cityId, review)
-      setReviews((prev) => {
-        const updated = [...prev, newReview]
-        return updated.sort((a, b) => {
-          return (
-            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-          )
-        })
-      })
-    },
-    [cityId]
-  )
+  const refetch = useCallback(async () => {
+    try {
+      setIsLoading(true)
+      setError(null)
+      const loadedReviews = await fetchReviewsByCityId(cityId)
+      setReviews(loadedReviews)
+    } catch (err) {
+      console.error('리뷰 조회 오류:', err)
+      setError('리뷰를 가져올 수 없습니다')
+    } finally {
+      setIsLoading(false)
+    }
+  }, [cityId])
 
-  const updateExistingReview = useCallback(
-    (
-      reviewId: string,
-      updates: Partial<Omit<Review, 'id' | 'user_id' | 'city_id' | 'created_at'>>
-    ) => {
-      const updated = updateReview(cityId, reviewId, updates)
-      if (updated) {
-        setReviews((prev) =>
-          prev.map((r) => (r.id === reviewId ? updated : r))
-        )
-      }
-    },
-    [cityId]
-  )
+  // Calculate average rating
+  const averageRating =
+    reviews.length > 0
+      ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
+      : 0
 
-  const deleteExistingReview = useCallback(
-    (reviewId: string) => {
-      const success = deleteReview(cityId, reviewId)
-      if (success) {
-        setReviews((prev) => prev.filter((r) => r.id !== reviewId))
-      }
-    },
-    [cityId]
-  )
+  // Sort by date (newest first)
+  const sortedByDate = useCallback(() => {
+    return [...reviews].sort(
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    )
+  }, [reviews])
 
-  const averageRating = getAverageRating(cityId)
-
-  const getReviewsByDateSorted = useCallback(
-    () => getReviewsByDate(cityId),
-    [cityId]
-  )
-
-  const getReviewsByRatingSorted = useCallback(
-    () => getReviewsByRating(cityId),
-    [cityId]
-  )
+  // Sort by rating (highest first)
+  const sortedByRating = useCallback(() => {
+    return [...reviews].sort((a, b) => b.rating - a.rating)
+  }, [reviews])
 
   return {
     reviews,
     averageRating,
-    addNewReview,
-    updateExistingReview,
-    deleteExistingReview,
-    getReviewsByDate: getReviewsByDateSorted,
-    getReviewsByRating: getReviewsByRatingSorted,
     isLoading,
+    error,
+    refetch,
+    sortedByDate,
+    sortedByRating,
   }
 }

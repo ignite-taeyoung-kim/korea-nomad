@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { useProfile } from '@/hooks/useProfile'
+import { useUserProfile } from '@/hooks/useUserProfile'
+import { updateUserProfile } from '@/app/auth/profile/actions'
 import ProfileCard from '@/components/dashboard/ProfileCard'
 import EditProfileForm from '@/components/dashboard/EditProfileForm'
 import ActivityStats from '@/components/dashboard/ActivityStats'
@@ -16,15 +17,30 @@ import { User, Heart, Bookmark, MessageCircle, Settings } from 'lucide-react'
 type TabType = 'profile' | 'activity' | 'settings'
 
 export default function DashboardPage() {
-  const { profile, updateName, updateBio, updateAvatar } = useProfile()
+  const { profile, isAuthenticated, loading } = useUserProfile()
   const [activeTab, setActiveTab] = useState<TabType>('profile')
   const [showEditForm, setShowEditForm] = useState(false)
+  const [isSaving, setIsSaving] = useState(false)
 
-  const handleSaveProfile = (name: string, bio: string, avatar_url: string) => {
-    updateName(name)
-    updateBio(bio)
-    updateAvatar(avatar_url)
-    setShowEditForm(false)
+  const handleSaveProfile = async (name: string, bio: string, avatar_url: string) => {
+    setIsSaving(true)
+    try {
+      const result = await updateUserProfile({
+        name,
+        bio,
+        avatar_url,
+      })
+      if (!result.error) {
+        setShowEditForm(false)
+      } else {
+        alert(result.error)
+      }
+    } catch (error) {
+      console.error('프로필 업데이트 오류:', error)
+      alert('프로필 업데이트에 실패했습니다.')
+    } finally {
+      setIsSaving(false)
+    }
   }
 
   const tabs = [
@@ -32,6 +48,32 @@ export default function DashboardPage() {
     { id: 'activity', label: '활동', icon: Heart },
     { id: 'settings', label: '설정', icon: Settings },
   ]
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mb-4"></div>
+          <p className="text-gray-600">로딩 중...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Show not authenticated message
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center bg-white rounded-lg border border-gray-200 p-8">
+          <p className="text-gray-600 mb-4">로그인이 필요합니다.</p>
+          <a href="/auth/signin" className="inline-block px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700">
+            로그인하기
+          </a>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">

@@ -1,7 +1,9 @@
-import { cities } from '@/lib/data'
+import { fetchCities } from '@/lib/supabase/queries'
 import CityCard from './CityCard'
 
-export default function CityGrid() {
+export default async function CityGrid() {
+  const cities = await fetchCities()
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Section Title */}

@@ -1,8 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import { cities, newMembers } from '@/lib/data'
+import { useState, useEffect } from 'react'
+import { useUserProfile } from '@/hooks/useUserProfile'
 import { useEvents } from '@/hooks/useEvents'
+import { createEvent } from '@/app/actions/events'
+import { fetchCities } from '@/lib/supabase/queries'
 import EventFilter from '@/components/community/EventFilter'
 import EventList from '@/components/community/EventList'
 import MemberList from '@/components/community/MemberList'
@@ -11,27 +13,65 @@ import CreateEventForm from '@/components/community/CreateEventForm'
 import { Users } from 'lucide-react'
 
 export default function CommunityPage() {
+  const { user, isAuthenticated, loading: userLoading } = useUserProfile()
   const {
     filteredEvents,
-    participatingIds,
     selectedCity,
     selectedCategory,
     setSelectedCity,
     setSelectedCategory,
-    toggleEventParticipation,
-    addNewEvent,
+    refetch,
+    isLoading: eventsLoading,
   } = useEvents()
 
   const [showCreateForm, setShowCreateForm] = useState(false)
+  const [cities, setCities] = useState<any[]>([])
+  const [citiesLoading, setCitiesLoading] = useState(true)
 
-  // Mock: Check if logged in (in real app, use auth context)
-  const isLoggedIn = true
-  const currentUserId = 'current_user_123'
-  const currentUserName = '로그인 사용자'
+  // Load cities
+  useEffect(() => {
+    const loadCities = async () => {
+      try {
+        const data = await fetchCities()
+        setCities(data)
+      } catch (error) {
+        console.error('도시 목록 조회 오류:', error)
+      } finally {
+        setCitiesLoading(false)
+      }
+    }
 
-  const handleCreateEvent = (event: Parameters<typeof addNewEvent>[0]) => {
-    addNewEvent(event)
-    setShowCreateForm(false)
+    loadCities()
+  }, [])
+
+  const handleCreateEvent = async (eventData: any) => {
+    if (!user?.id) {
+      alert('로그인이 필요합니다.')
+      return
+    }
+
+    try {
+      const result = await createEvent({
+        cityId: eventData.city_id,
+        title: eventData.title,
+        description: eventData.description,
+        category: eventData.category,
+        date: eventData.date,
+        time: eventData.time,
+        location: eventData.location,
+      })
+
+      if (!result.error) {
+        setShowCreateForm(false)
+        // Refetch events to show the new event
+        await refetch()
+      } else {
+        alert(result.error)
+      }
+    } catch (error) {
+      console.error('이벤트 생성 오류:', error)
+      alert('이벤트 생성에 실패했습니다.')
+    }
   }
 
   return (
@@ -55,7 +95,7 @@ export default function CommunityPage() {
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Create Event Button */}
-            {isLoggedIn && !showCreateForm && (
+            {isAuthenticated && !showCreateForm && (
               <button
                 onClick={() => setShowCreateForm(true)}
                 className="w-full mb-6 px-4 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium"
@@ -65,12 +105,12 @@ export default function CommunityPage() {
             )}
 
             {/* Create Event Form */}
-            {showCreateForm && isLoggedIn && (
+            {showCreateForm && isAuthenticated && (
               <div className="mb-8">
                 <CreateEventForm
                   cities={cities}
-                  userId={currentUserId}
-                  userName={currentUserName}
+                  userId={user?.id || ''}
+                  userName={user?.name || '익명의 사용자'}
                   onEventCreated={handleCreateEvent}
                   onCancel={() => setShowCreateForm(false)}
                 />
@@ -78,7 +118,7 @@ export default function CommunityPage() {
             )}
 
             {/* Login Prompt */}
-            {!isLoggedIn && (
+            {!isAuthenticated && (
               <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 text-sm">
                 이벤트를 만들려면 로그인이 필요합니다.
               </div>
@@ -96,21 +136,20 @@ export default function CommunityPage() {
             {/* Event List */}
             <EventList
               events={filteredEvents}
-              participatingIds={participatingIds}
-              onToggleParticipation={toggleEventParticipation}
+              participatingIds={[]}
+              onToggleParticipation={() => {}}
             />
           </div>
 
           {/* Sidebar */}
           <div className="space-y-8">
             {/* Community News Feed */}
-            <CommunityNewsFeed
-              recentEvents={filteredEvents.slice(0, 3)}
-              recentMembers={newMembers}
-            />
-
-            {/* Member List */}
-            <MemberList members={newMembers} />
+            {filteredEvents.length > 0 && (
+              <CommunityNewsFeed
+                recentEvents={filteredEvents.slice(0, 3)}
+                recentMembers={[]}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -2,19 +2,30 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Event } from '@/lib/types'
-import { events } from '@/lib/data'
-import { getParticipations } from '@/lib/eventParticipation'
-import { cities } from '@/lib/data'
+import { Event, City } from '@/lib/types'
+import { fetchUpcomingEvents, fetchCities } from '@/lib/supabase/queries'
 import { CalendarCheck, Clock, MapPin } from 'lucide-react'
 
 export default function MyEvents() {
   const [participatedEvents, setParticipatedEvents] = useState<Event[]>([])
+  const [cities, setCities] = useState<City[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const participationIds = getParticipations()
-    const participated = events.filter((event) => participationIds.includes(event.id))
-    setParticipatedEvents(participated)
+    const loadData = async () => {
+      try {
+        const upcomingEvents = await fetchUpcomingEvents(365) // Show upcoming events from next year
+        const citiesData = await fetchCities()
+        setParticipatedEvents(upcomingEvents)
+        setCities(citiesData)
+      } catch (error) {
+        console.error('이벤트 조회 오류:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadData()
   }, [])
 
   const getCityName = (cityId: string): string => {
@@ -30,11 +41,20 @@ export default function MyEvents() {
     })
   }
 
+  if (isLoading) {
+    return (
+      <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+        <p className="text-gray-600 mt-4">데이터 로딩 중...</p>
+      </div>
+    )
+  }
+
   if (participatedEvents.length === 0) {
     return (
       <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
         <CalendarCheck size={40} className="mx-auto text-gray-300 mb-3" />
-        <p className="text-gray-600 mb-4">참가한 이벤트가 없습니다.</p>
+        <p className="text-gray-600 mb-4">예정된 이벤트가 없습니다.</p>
         <Link href="/community" className="text-primary-600 hover:text-primary-700 font-medium">
           커뮤니티 이벤트 탐색하기
         </Link>
@@ -52,8 +72,8 @@ export default function MyEvents() {
         >
           <div className="flex items-start justify-between mb-3">
             <h3 className="text-lg font-bold text-gray-900 flex-1">{event.title}</h3>
-            <span className="text-xs font-medium px-2 py-1 bg-green-50 text-green-600 rounded">
-              참가중
+            <span className="text-xs font-medium px-2 py-1 bg-blue-50 text-blue-600 rounded">
+              예정중
             </span>
           </div>
 

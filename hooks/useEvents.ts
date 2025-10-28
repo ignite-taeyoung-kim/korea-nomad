@@ -2,40 +2,44 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { Event } from '@/lib/types'
-import { events as mockEvents } from '@/lib/data'
-import {
-  getParticipations,
-  toggleParticipation,
-  addParticipation,
-} from '@/lib/eventParticipation'
+import { fetchUpcomingEvents } from '@/lib/supabase/queries'
 
 interface UseEventsReturn {
   events: Event[]
   filteredEvents: Event[]
-  participatingIds: string[]
   selectedCity: string | null
   selectedCategory: Event['category'] | null
   setSelectedCity: (cityId: string | null) => void
   setSelectedCategory: (category: Event['category'] | null) => void
-  toggleEventParticipation: (eventId: string) => void
-  addNewEvent: (event: Omit<Event, 'id'>) => void
   isLoading: boolean
+  error: string | null
+  refetch: () => Promise<void>
 }
 
 export function useEvents(): UseEventsReturn {
   const [events, setEvents] = useState<Event[]>([])
-  const [participatingIds, setParticipatingIds] = useState<string[]>([])
   const [selectedCity, setSelectedCity] = useState<string | null>(null)
   const [selectedCategory, setSelectedCategory] = useState<Event['category'] | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  // Load initial data
+  // Load initial data from Supabase
   useEffect(() => {
-    setIsLoading(true)
-    const loadedParticipations = getParticipations()
-    setParticipatingIds(loadedParticipations)
-    setEvents(mockEvents)
-    setIsLoading(false)
+    const loadEvents = async () => {
+      try {
+        setIsLoading(true)
+        setError(null)
+        const loadedEvents = await fetchUpcomingEvents(90) // Load events for next 90 days
+        setEvents(loadedEvents)
+      } catch (err) {
+        console.error('이벤트 조회 오류:', err)
+        setError('이벤트를 가져올 수 없습니다')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadEvents()
   }, [])
 
   // Filter events
@@ -49,38 +53,29 @@ export function useEvents(): UseEventsReturn {
     return true
   })
 
-  const handleToggleParticipation = useCallback((eventId: string) => {
-    const isNowParticipating = toggleParticipation(eventId)
-    setParticipatingIds((prev) => {
-      if (isNowParticipating) {
-        return [...prev, eventId]
-      } else {
-        return prev.filter((id) => id !== eventId)
-      }
-    })
-  }, [])
-
-  const handleAddNewEvent = useCallback((event: Omit<Event, 'id'>) => {
-    const newEvent: Event = {
-      ...event,
-      id: `local_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+  const refetch = useCallback(async () => {
+    try {
+      setIsLoading(true)
+      setError(null)
+      const loadedEvents = await fetchUpcomingEvents(90)
+      setEvents(loadedEvents)
+    } catch (err) {
+      console.error('이벤트 조회 오류:', err)
+      setError('이벤트를 가져올 수 없습니다')
+    } finally {
+      setIsLoading(false)
     }
-    setEvents((prev) => [newEvent, ...prev])
-    // Auto-participate in own event
-    addParticipation(newEvent.id)
-    setParticipatingIds((prev) => [...prev, newEvent.id])
   }, [])
 
   return {
     events,
     filteredEvents,
-    participatingIds,
     selectedCity,
     selectedCategory,
     setSelectedCity,
     setSelectedCategory,
-    toggleEventParticipation: handleToggleParticipation,
-    addNewEvent: handleAddNewEvent,
     isLoading,
+    error,
+    refetch,
   }
 }

@@ -2,18 +2,40 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Event } from '@/lib/types'
-import { events } from '@/lib/data'
-import { cities } from '@/lib/data'
+import { Event, City } from '@/lib/types'
+import { fetchUserCreatedEvents, fetchCities } from '@/lib/supabase/queries'
+import { useUserProfile } from '@/hooks/useUserProfile'
 import { Users, Clock, MapPin } from 'lucide-react'
 
 export default function MyCreatedEvents() {
+  const { user, loading: userLoading } = useUserProfile()
   const [createdEvents, setCreatedEvents] = useState<Event[]>([])
+  const [cities, setCities] = useState<City[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const created = events.filter((event) => event.creator_id === 'current_user_123')
-    setCreatedEvents(created)
-  }, [])
+    const loadData = async () => {
+      if (!user?.id) {
+        setIsLoading(false)
+        return
+      }
+
+      try {
+        const events = await fetchUserCreatedEvents(user.id)
+        const citiesData = await fetchCities()
+        setCreatedEvents(events)
+        setCities(citiesData)
+      } catch (error) {
+        console.error('데이터 조회 오류:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    if (!userLoading) {
+      loadData()
+    }
+  }, [user, userLoading])
 
   const getCityName = (cityId: string): string => {
     return cities.find((c) => c.id === cityId)?.name || '도시'
@@ -26,6 +48,15 @@ export default function MyCreatedEvents() {
       month: 'short',
       day: 'numeric',
     })
+  }
+
+  if (isLoading || userLoading) {
+    return (
+      <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+        <p className="text-gray-600 mt-4">데이터 로딩 중...</p>
+      </div>
+    )
   }
 
   if (createdEvents.length === 0) {

@@ -21,6 +21,9 @@ export default {
           900: '#0c3d66',
         },
       },
+      animation: {
+        'bounce-slow': 'bounce 2s infinite',
+      },
     },
   },
 } satisfies Config

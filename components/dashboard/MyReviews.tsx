@@ -2,24 +2,50 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Review } from '@/lib/types'
-import { reviews as mockReviews } from '@/lib/data'
-import { deleteReview } from '@/lib/reviewStorage'
-import { cities } from '@/lib/data'
+import { Review, City } from '@/lib/types'
+import { deleteReview } from '@/app/actions/reviews'
+import { fetchUserReviews, fetchCities } from '@/lib/supabase/queries'
+import { useUserProfile } from '@/hooks/useUserProfile'
 import { Trash2, MessageCircle } from 'lucide-react'
 
 export default function MyReviews() {
+  const { user, loading: userLoading } = useUserProfile()
   const [userReviews, setUserReviews] = useState<Review[]>([])
+  const [cities, setCities] = useState<City[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const myReviews = mockReviews.filter((r) => r.user_id === 'current_user_123')
-    setUserReviews(myReviews)
-  }, [])
+    const loadData = async () => {
+      if (!user?.id) {
+        setIsLoading(false)
+        return
+      }
 
-  const handleDeleteReview = (cityId: string, reviewId: string) => {
+      try {
+        const reviews = await fetchUserReviews(user.id)
+        const citiesData = await fetchCities()
+        setUserReviews(reviews)
+        setCities(citiesData)
+      } catch (error) {
+        console.error('데이터 조회 오류:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    if (!userLoading) {
+      loadData()
+    }
+  }, [user, userLoading])
+
+  const handleDeleteReview = async (reviewId: string) => {
     if (confirm('리뷰를 삭제하시겠습니까?')) {
-      deleteReview(cityId, reviewId)
-      setUserReviews((prev) => prev.filter((r) => r.id !== reviewId))
+      const result = await deleteReview(reviewId)
+      if (!result.error) {
+        setUserReviews((prev) => prev.filter((r) => r.id !== reviewId))
+      } else {
+        alert(result.error)
+      }
     }
   }
 
@@ -34,6 +60,15 @@ export default function MyReviews() {
       month: 'short',
       day: 'numeric',
     })
+  }
+
+  if (isLoading || userLoading) {
+    return (
+      <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+        <p className="text-gray-600 mt-4">데이터 로딩 중...</p>
+      </div>
+    )
   }
 
   if (userReviews.length === 0) {
@@ -67,7 +102,7 @@ export default function MyReviews() {
               <p className="text-sm text-gray-500 mt-1">{formatDate(review.created_at)}</p>
             </div>
             <button
-              onClick={() => handleDeleteReview(review.city_id, review.id)}
+              onClick={() => handleDeleteReview(review.id)}
               className="text-red-600 hover:text-red-700 transition-colors p-2"
             >
               <Trash2 size={18} />

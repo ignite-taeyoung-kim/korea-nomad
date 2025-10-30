@@ -138,24 +138,27 @@ export class BasePage {
    * 로컬스토리지에 데이터 저장
    */
   async setLocalStorage(key: string, value: string): Promise<void> {
-    await this.page.evaluate(
-      ([k, v]: [string, string]) => localStorage.setItem(k, v),
-      [key, value]
-    );
+    await this.page.evaluate((k: string, v: string) => {
+      localStorage.setItem(k, v);
+    }, key, value as any);
   }
 
   /**
    * 로컬스토리지에서 데이터 조회
    */
   async getLocalStorage(key: string): Promise<string | null> {
-    return await this.page.evaluate((k: string) => localStorage.getItem(k), key);
+    return await this.page.evaluate((k: string) => {
+      return localStorage.getItem(k);
+    }, key as any);
   }
 
   /**
    * 로컬스토리지 초기화
    */
   async clearLocalStorage(): Promise<void> {
-    await this.page.evaluate(() => localStorage.clear());
+    await this.page.evaluate(() => {
+      localStorage.clear();
+    });
   }
 
   /**

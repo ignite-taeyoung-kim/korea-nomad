@@ -139,7 +139,7 @@ export class BasePage {
    */
   async setLocalStorage(key: string, value: string): Promise<void> {
     await this.page.evaluate(
-      (k, v) => localStorage.setItem(k, v),
+      (k: string, v: string) => localStorage.setItem(k, v),
       key,
       value
     );
@@ -149,7 +149,7 @@ export class BasePage {
    * 로컬스토리지에서 데이터 조회
    */
   async getLocalStorage(key: string): Promise<string | null> {
-    return await this.page.evaluate((k) => localStorage.getItem(k), key);
+    return await this.page.evaluate((k: string) => localStorage.getItem(k), key);
   }
 
   /**

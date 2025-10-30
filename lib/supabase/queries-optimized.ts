@@ -325,8 +325,8 @@ export async function fetchBookmarkedCitiesOptimized(userId: string, page: numbe
     .eq('user_id', userId)
 
   const cities = data
-    .filter((item): item is { cities: City | null } => item.cities !== null)
-    .map((item) => item.cities as City)
+    .filter((item) => item.cities !== null && Array.isArray(item.cities) && item.cities.length > 0)
+    .map((item) => (item.cities as any[])[0])
 
   return {
     data: cities,

@@ -165,8 +165,8 @@ export async function fetchFavoritesCities(userId: string) {
   }
 
   return data
-    .filter((item): item is { cities: City | null } => item.cities !== null)
-    .map((item) => item.cities as City)
+    .filter((item) => item.cities !== null && Array.isArray(item.cities) && item.cities.length > 0)
+    .map((item) => (item.cities as any[])[0])
 }
 
 export async function isFavorite(userId: string, cityId: string): Promise<boolean> {
@@ -214,8 +214,8 @@ export async function fetchBookmarkedCities(userId: string) {
   }
 
   return data
-    .filter((item): item is { cities: City | null } => item.cities !== null)
-    .map((item) => item.cities as City)
+    .filter((item) => item.cities !== null && Array.isArray(item.cities) && item.cities.length > 0)
+    .map((item) => (item.cities as any[])[0])
 }
 
 export async function isBookmarked(userId: string, cityId: string): Promise<boolean> {

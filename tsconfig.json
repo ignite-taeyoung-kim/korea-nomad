@@ -40,6 +40,8 @@
   ],
   "exclude": [
     "node_modules",
-    "worktree"
+    "worktree",
+    "e2e",
+    "playwright.config.ts"
   ]
 }

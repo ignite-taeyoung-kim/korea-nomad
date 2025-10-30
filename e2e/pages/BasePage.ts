@@ -139,9 +139,8 @@ export class BasePage {
    */
   async setLocalStorage(key: string, value: string): Promise<void> {
     await this.page.evaluate(
-      (k: string, v: string) => localStorage.setItem(k, v),
-      key,
-      value
+      ([k, v]: [string, string]) => localStorage.setItem(k, v),
+      [key, value]
     );
   }
 

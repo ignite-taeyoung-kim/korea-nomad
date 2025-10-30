@@ -148,10 +148,10 @@ export class BasePage {
    * 로컬스토리지에서 데이터 조회
    */
   async getLocalStorage(key: string): Promise<string | null> {
-    return await this.page.evaluate(
+    return (await this.page.evaluate(
       `(key) => localStorage.getItem(key)`,
       key
-    ) as Promise<string | null>;
+    )) as string | null;
   }
 
   /**

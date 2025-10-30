@@ -273,8 +273,8 @@ export async function fetchFavoritesCitiesOptimized(userId: string, page: number
     .eq('user_id', userId)
 
   const cities = data
-    .filter((item): item is { cities: City | null } => item.cities !== null)
-    .map((item) => item.cities as City)
+    .filter((item): item is { city_id: string; cities: City } => item.cities !== null)
+    .map((item) => item.cities)
 
   return {
     data: cities,

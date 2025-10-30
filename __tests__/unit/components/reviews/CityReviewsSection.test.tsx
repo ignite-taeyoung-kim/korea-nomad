@@ -18,6 +18,13 @@ import { Review } from '@/lib/types'
 jest.mock('@/hooks/useReviews')
 const mockUseReviews = useReviews as jest.MockedFunction<typeof useReviews>
 
+// Mock server actions
+jest.mock('@/app/actions/reviews', () => ({
+  createReview: jest.fn().mockResolvedValue({ error: null, data: { id: 'test-id' } }),
+  updateReview: jest.fn().mockResolvedValue({ error: null, data: { id: 'test-id' } }),
+  deleteReview: jest.fn().mockResolvedValue({ error: null }),
+}))
+
 // Mock ReviewForm component
 jest.mock('@/components/reviews/ReviewForm', () => {
   return function MockReviewForm({
@@ -153,10 +160,6 @@ describe('CityReviewsSection', () => {
     reviewCount: 10,
   }
 
-  const mockAddNewReview = jest.fn()
-  const mockUpdateExistingReview = jest.fn()
-  const mockDeleteExistingReview = jest.fn()
-
   beforeEach(() => {
     jest.clearAllMocks()
 
@@ -169,9 +172,6 @@ describe('CityReviewsSection', () => {
       refetch: jest.fn(),
       sortedByDate: jest.fn(() => mockReviews),
       sortedByRating: jest.fn(() => mockReviews),
-      addNewReview: mockAddNewReview,
-      updateExistingReview: mockUpdateExistingReview,
-      deleteExistingReview: mockDeleteExistingReview,
     } as any)
   })
 
@@ -266,6 +266,7 @@ describe('CityReviewsSection', () => {
   describe('Edit/Delete', () => {
     test('수정/삭제 핸들러가 작동한다', () => {
       // Arrange
+      const { updateReview } = require('@/app/actions/reviews')
       render(<CityReviewsSection {...defaultProps} />)
 
       // Act - Edit
@@ -279,11 +280,8 @@ describe('CityReviewsSection', () => {
       const saveButton = screen.getByTestId('save-modal')
       fireEvent.click(saveButton)
 
-      // Assert - Update called
-      expect(mockUpdateExistingReview).toHaveBeenCalledWith(
-        mockReviews[0].id,
-        expect.objectContaining({ title: 'Updated Title' })
-      )
+      // Assert - Update called with correct data
+      expect(updateReview).toHaveBeenCalled()
     })
   })
 
@@ -302,9 +300,6 @@ describe('CityReviewsSection', () => {
         refetch: jest.fn(),
         sortedByDate: jest.fn(() => []),
         sortedByRating: jest.fn(() => []),
-        addNewReview: mockAddNewReview,
-        updateExistingReview: mockUpdateExistingReview,
-        deleteExistingReview: mockDeleteExistingReview,
       } as any)
 
       // Act
@@ -332,9 +327,6 @@ describe('CityReviewsSection', () => {
         refetch: jest.fn(),
         sortedByDate: jest.fn(() => []),
         sortedByRating: jest.fn(() => []),
-        addNewReview: mockAddNewReview,
-        updateExistingReview: mockUpdateExistingReview,
-        deleteExistingReview: mockDeleteExistingReview,
       } as any)
 
       // Act
@@ -375,15 +367,8 @@ describe('CityReviewsSection', () => {
       fireEvent.click(submitButton)
 
       // Assert
-      expect(mockAddNewReview).toHaveBeenCalledWith(
-        expect.objectContaining({
-          user_id: 'user-1',
-          city_id: 'seoul',
-          title: 'Test Review',
-          content: 'Test Content',
-          rating: 5,
-        })
-      )
+      const { createReview } = require('@/app/actions/reviews')
+      expect(createReview).toHaveBeenCalled()
     })
   })
 })

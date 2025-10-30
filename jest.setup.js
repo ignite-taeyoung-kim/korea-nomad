@@ -1,6 +1,15 @@
 require('@testing-library/jest-dom');
 
 // ============================================================================
+// Global Polyfills
+// ============================================================================
+
+// Add TextEncoder/TextDecoder for Next.js compatibility
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
+// ============================================================================
 // Environment Variables
 // ============================================================================
 
@@ -105,6 +114,30 @@ jest.setTimeout(10000);
 // ============================================================================
 // Supabase Client Mocks
 // ============================================================================
+
+// Mock next/cache - must be mocked before imports
+jest.mock('next/cache', () => ({
+  revalidatePath: jest.fn().mockImplementation(() => Promise.resolve()),
+  revalidateTag: jest.fn().mockImplementation(() => Promise.resolve()),
+}), { virtual: true });
+
+// Mock next/headers
+jest.mock('next/headers', () => ({
+  cookies: jest.fn(() => ({
+    get: jest.fn(),
+    set: jest.fn(),
+  })),
+  headers: jest.fn(() => ({
+    get: jest.fn(),
+  })),
+}), { virtual: true });
+
+// Mock server actions
+jest.mock('@/app/actions/reviews', () => ({
+  createReview: jest.fn().mockResolvedValue({ error: null, data: { id: 'test-id' } }),
+  updateReview: jest.fn().mockResolvedValue({ error: null, data: { id: 'test-id' } }),
+  deleteReview: jest.fn().mockResolvedValue({ error: null }),
+}));
 
 // Mock Supabase client creation
 jest.mock('@/utils/supabase/client', () => ({

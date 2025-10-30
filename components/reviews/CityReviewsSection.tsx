@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Review } from '@/lib/types'
 import { useReviews } from '@/hooks/useReviews'
+import { createReview, updateReview, deleteReview } from '@/app/actions/reviews'
 import ReviewForm from './ReviewForm'
 import ReviewList from './ReviewList'
 import ReviewModal from './ReviewModal'
@@ -21,9 +22,7 @@ export default function CityReviewsSection({
   const {
     reviews,
     averageRating,
-    addNewReview,
-    updateExistingReview,
-    deleteExistingReview,
+    refetch,
   } = useReviews(cityId)
 
   const [showForm, setShowForm] = useState(false)
@@ -35,22 +34,47 @@ export default function CityReviewsSection({
   const currentUsername = '로그인 사용자'
   const isLoggedIn = true // In real app, check from auth context
 
-  const handleAddReview = (review: Omit<Review, 'id'>) => {
-    addNewReview(review)
-    setShowForm(false)
-  }
-
-  const handleUpdateReview = (updates: Partial<Review>) => {
-    if (editingReview) {
-      updateExistingReview(editingReview.id, updates)
-      setEditingReview(null)
+  const handleAddReview = async (review: Omit<Review, 'id'>) => {
+    try {
+      await createReview({
+        cityId,
+        title: review.title,
+        content: review.content,
+        rating: review.rating,
+      })
+      setShowForm(false)
+      await refetch()
+    } catch (error) {
+      console.error('리뷰 작성 실패:', error)
     }
   }
 
-  const handleDeleteReview = () => {
+  const handleUpdateReview = async (updates: Partial<Review>) => {
     if (editingReview) {
-      deleteExistingReview(editingReview.id)
-      setEditingReview(null)
+      try {
+        await updateReview({
+          reviewId: editingReview.id,
+          title: updates.title,
+          content: updates.content,
+          rating: updates.rating,
+        })
+        setEditingReview(null)
+        await refetch()
+      } catch (error) {
+        console.error('리뷰 수정 실패:', error)
+      }
+    }
+  }
+
+  const handleDeleteReview = async () => {
+    if (editingReview) {
+      try {
+        await deleteReview(editingReview.id)
+        setEditingReview(null)
+        await refetch()
+      } catch (error) {
+        console.error('리뷰 삭제 실패:', error)
+      }
     }
   }
 
@@ -107,7 +131,7 @@ export default function CityReviewsSection({
         reviews={reviews}
         currentUserId={currentUserId}
         onEditReview={setEditingReview}
-        onDeleteReview={deleteExistingReview}
+        onDeleteReview={() => handleDeleteReview()}
       />
 
       {/* Edit Modal */}

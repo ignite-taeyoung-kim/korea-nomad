@@ -193,9 +193,9 @@ export const cities: City[] = [
     dislikes_count: 18,
     description: '아름다운 자연과 함께하는 노마드 생활',
     gallery_images: [
-      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500',
-      'https://images.unsplash.com/photo-1473496169865-658ba7c44d8a?w=500',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500',
+      'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=500',
+      'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500',
     ],
     activities: [
       { id: 'a1', name: '한라산 트래킹', category: 'nature', description: '제주도의 최고봉 한라산에서의 등산 및 자연 경험', icon: '⛰️' },

@@ -1,0 +1,618 @@
+{
+  "project": {
+    "name": "Korea Nomad",
+    "description": "한국 노마드 여행 정보 플랫폼",
+    "version": "2.0",
+    "createdAt": "2025-11-18",
+    "status": "complete",
+    "stack": {
+      "frontend": "React 19 + TypeScript + Tailwind CSS",
+      "backend": "Spring Boot 3 + Java 17",
+      "database": "MySQL 8",
+      "migration": "Flyway",
+      "stateManagement": "Zustand + React Query"
+    }
+  },
+  "database": {
+    "tables": [
+      {
+        "id": "user",
+        "name": "user",
+        "description": "사용자 정보",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT",
+            "primaryKey": true,
+            "autoIncrement": true,
+            "nullable": false,
+            "comment": "사용자 ID"
+          },
+          {
+            "name": "email",
+            "type": "VARCHAR(255)",
+            "nullable": false,
+            "unique": true,
+            "comment": "이메일"
+          },
+          {
+            "name": "password",
+            "type": "VARCHAR(255)",
+            "nullable": false,
+            "comment": "해시된 비밀번호"
+          },
+          {
+            "name": "name",
+            "type": "VARCHAR(100)",
+            "nullable": false,
+            "comment": "이름"
+          },
+          {
+            "name": "gender",
+            "type": "ENUM('MALE', 'FEMALE', 'OTHER')",
+            "nullable": true,
+            "comment": "성별"
+          },
+          {
+            "name": "bio",
+            "type": "TEXT",
+            "nullable": true,
+            "comment": "자기소개"
+          },
+          {
+            "name": "avatar_url",
+            "type": "VARCHAR(500)",
+            "nullable": true,
+            "comment": "프로필 이미지 URL"
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "default": "CURRENT_TIMESTAMP",
+            "nullable": false,
+            "comment": "가입일시"
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "default": "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+            "nullable": false,
+            "comment": "수정일시"
+          }
+        ],
+        "indexes": [
+          {
+            "name": "idx_email",
+            "columns": ["email"],
+            "unique": true
+          }
+        ]
+      },
+      {
+        "id": "city",
+        "name": "city",
+        "description": "도시 정보",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT",
+            "primaryKey": true,
+            "autoIncrement": true,
+            "nullable": false,
+            "comment": "도시 ID"
+          },
+          {
+            "name": "name",
+            "type": "VARCHAR(100)",
+            "nullable": false,
+            "comment": "도시명 (한글)"
+          },
+          {
+            "name": "name_en",
+            "type": "VARCHAR(100)",
+            "nullable": false,
+            "comment": "도시명 (영문)"
+          },
+          {
+            "name": "icon",
+            "type": "VARCHAR(10)",
+            "nullable": true,
+            "comment": "도시 이모지"
+          },
+          {
+            "name": "description",
+            "type": "TEXT",
+            "nullable": true,
+            "comment": "도시 설명"
+          },
+          {
+            "name": "region",
+            "type": "ENUM('SEOUL', 'GYEONGGI', 'GANGWON', 'CHUNGCHEONG', 'JEOLLA', 'GYEONGSAN', 'BUSAN', 'DAEGU', 'GWANGJU', 'DAEJEON', 'INCHEON', 'ULSAN', 'SEJONG')",
+            "nullable": false,
+            "comment": "지역"
+          },
+          {
+            "name": "rating",
+            "type": "DECIMAL(3,1)",
+            "nullable": false,
+            "default": 0,
+            "comment": "평점 (0.0-10.0)"
+          },
+          {
+            "name": "review_count",
+            "type": "INT",
+            "nullable": false,
+            "default": 0,
+            "comment": "리뷰 수"
+          },
+          {
+            "name": "monthly_budget_min",
+            "type": "INT",
+            "nullable": false,
+            "comment": "월 생활비 최소 (원)"
+          },
+          {
+            "name": "monthly_budget_max",
+            "type": "INT",
+            "nullable": false,
+            "comment": "월 생활비 최대 (원)"
+          },
+          {
+            "name": "internet_speed",
+            "type": "INT",
+            "nullable": false,
+            "comment": "인터넷 속도 (Mbps)"
+          },
+          {
+            "name": "environment_type",
+            "type": "ENUM('BEACH', 'MOUNTAIN', 'URBAN', 'RURAL', 'MIXED')",
+            "nullable": false,
+            "comment": "환경 타입"
+          },
+          {
+            "name": "best_seasons",
+            "type": "JSON",
+            "nullable": true,
+            "comment": "최적 계절 (JSON 배열: ['SPRING', 'SUMMER', 'FALL', 'WINTER'])"
+          },
+          {
+            "name": "user_count",
+            "type": "INT",
+            "nullable": false,
+            "default": 0,
+            "comment": "가입한 노마드 수"
+          },
+          {
+            "name": "cafe_count",
+            "type": "INT",
+            "nullable": true,
+            "comment": "카페 수"
+          },
+          {
+            "name": "cafe_rating",
+            "type": "DECIMAL(3,1)",
+            "nullable": true,
+            "comment": "카페 평점"
+          },
+          {
+            "name": "latitude",
+            "type": "DECIMAL(10,8)",
+            "nullable": true,
+            "comment": "위도"
+          },
+          {
+            "name": "longitude",
+            "type": "DECIMAL(11,8)",
+            "nullable": true,
+            "comment": "경도"
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "default": "CURRENT_TIMESTAMP",
+            "nullable": false
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "default": "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+            "nullable": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "idx_name",
+            "columns": ["name"]
+          },
+          {
+            "name": "idx_rating",
+            "columns": ["rating"]
+          },
+          {
+            "name": "idx_region",
+            "columns": ["region"]
+          },
+          {
+            "name": "idx_user_count",
+            "columns": ["user_count"]
+          }
+        ]
+      },
+      {
+        "id": "review",
+        "name": "review",
+        "description": "도시 리뷰",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT",
+            "primaryKey": true,
+            "autoIncrement": true,
+            "nullable": false
+          },
+          {
+            "name": "city_id",
+            "type": "BIGINT",
+            "nullable": false,
+            "foreignKey": {
+              "table": "city",
+              "column": "id"
+            },
+            "comment": "도시 ID"
+          },
+          {
+            "name": "user_id",
+            "type": "BIGINT",
+            "nullable": false,
+            "foreignKey": {
+              "table": "user",
+              "column": "id"
+            },
+            "comment": "사용자 ID"
+          },
+          {
+            "name": "rating",
+            "type": "INT",
+            "nullable": false,
+            "comment": "평점 (1-10)"
+          },
+          {
+            "name": "content",
+            "type": "TEXT",
+            "nullable": false,
+            "comment": "리뷰 내용"
+          },
+          {
+            "name": "likes_count",
+            "type": "INT",
+            "default": 0,
+            "nullable": false,
+            "comment": "좋아요 수"
+          },
+          {
+            "name": "comment_count",
+            "type": "INT",
+            "default": 0,
+            "nullable": false,
+            "comment": "댓글 수"
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "default": "CURRENT_TIMESTAMP",
+            "nullable": false
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "default": "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+            "nullable": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "idx_city_id",
+            "columns": ["city_id"]
+          },
+          {
+            "name": "idx_user_id",
+            "columns": ["user_id"]
+          },
+          {
+            "name": "idx_created_at",
+            "columns": ["created_at"]
+          }
+        ]
+      },
+      {
+        "id": "favorite",
+        "name": "favorite",
+        "description": "사용자가 좋아요 한 도시",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT",
+            "primaryKey": true,
+            "autoIncrement": true,
+            "nullable": false
+          },
+          {
+            "name": "user_id",
+            "type": "BIGINT",
+            "nullable": false,
+            "foreignKey": {
+              "table": "user",
+              "column": "id"
+            }
+          },
+          {
+            "name": "city_id",
+            "type": "BIGINT",
+            "nullable": false,
+            "foreignKey": {
+              "table": "city",
+              "column": "id"
+            }
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "default": "CURRENT_TIMESTAMP",
+            "nullable": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "idx_user_city",
+            "columns": ["user_id", "city_id"],
+            "unique": true
+          }
+        ]
+      },
+      {
+        "id": "bookmark",
+        "name": "bookmark",
+        "description": "사용자가 북마크한 도시",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT",
+            "primaryKey": true,
+            "autoIncrement": true,
+            "nullable": false
+          },
+          {
+            "name": "user_id",
+            "type": "BIGINT",
+            "nullable": false,
+            "foreignKey": {
+              "table": "user",
+              "column": "id"
+            }
+          },
+          {
+            "name": "city_id",
+            "type": "BIGINT",
+            "nullable": false,
+            "foreignKey": {
+              "table": "city",
+              "column": "id"
+            }
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "default": "CURRENT_TIMESTAMP",
+            "nullable": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "idx_user_city",
+            "columns": ["user_id", "city_id"],
+            "unique": true
+          }
+        ]
+      },
+      {
+        "id": "event",
+        "name": "event",
+        "description": "커뮤니티 이벤트",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT",
+            "primaryKey": true,
+            "autoIncrement": true,
+            "nullable": false
+          },
+          {
+            "name": "title",
+            "type": "VARCHAR(255)",
+            "nullable": false,
+            "comment": "이벤트명"
+          },
+          {
+            "name": "description",
+            "type": "TEXT",
+            "nullable": true,
+            "comment": "이벤트 설명"
+          },
+          {
+            "name": "city_id",
+            "type": "BIGINT",
+            "nullable": false,
+            "foreignKey": {
+              "table": "city",
+              "column": "id"
+            }
+          },
+          {
+            "name": "organizer_id",
+            "type": "BIGINT",
+            "nullable": false,
+            "foreignKey": {
+              "table": "user",
+              "column": "id"
+            },
+            "comment": "주최자 ID"
+          },
+          {
+            "name": "event_date",
+            "type": "DATETIME",
+            "nullable": false,
+            "comment": "이벤트 날짜/시간"
+          },
+          {
+            "name": "location",
+            "type": "VARCHAR(255)",
+            "nullable": false,
+            "comment": "장소"
+          },
+          {
+            "name": "max_participants",
+            "type": "INT",
+            "nullable": true,
+            "comment": "최대 참가 인원"
+          },
+          {
+            "name": "participant_count",
+            "type": "INT",
+            "default": 0,
+            "nullable": false,
+            "comment": "현재 참가 인원"
+          },
+          {
+            "name": "category",
+            "type": "ENUM('NETWORKING', 'WORKSHOP', 'TOUR', 'SPORTS', 'CULTURE', 'OTHER')",
+            "nullable": false,
+            "comment": "이벤트 카테고리"
+          },
+          {
+            "name": "status",
+            "type": "ENUM('UPCOMING', 'ONGOING', 'COMPLETED', 'CANCELLED')",
+            "default": "UPCOMING",
+            "nullable": false
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "default": "CURRENT_TIMESTAMP",
+            "nullable": false
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "default": "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+            "nullable": false
+          }
+        ],
+        "indexes": [
+          {
+            "name": "idx_city_id",
+            "columns": ["city_id"]
+          },
+          {
+            "name": "idx_event_date",
+            "columns": ["event_date"]
+          }
+        ]
+      }
+    ]
+  },
+  "api": {
+    "baseUrl": "http://localhost:8080/api",
+    "version": "v1",
+    "endpoints": [
+      {
+        "id": "auth_login",
+        "method": "POST",
+        "path": "/auth/login",
+        "description": "사용자 로그인",
+        "tags": ["Auth"],
+        "requestBody": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "example": "user@example.com"
+            },
+            "password": {
+              "type": "string",
+              "example": "password123"
+            }
+          },
+          "required": ["email", "password"]
+        },
+        "response": {
+          "status": 200,
+          "body": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "number" },
+              "email": { "type": "string" },
+              "name": { "type": "string" },
+              "token": { "type": "string" },
+              "avatar_url": { "type": "string" }
+            }
+          }
+        }
+      },
+      {
+        "id": "auth_signup",
+        "method": "POST",
+        "path": "/auth/signup",
+        "description": "사용자 회원가입",
+        "tags": ["Auth"],
+        "requestBody": {
+          "type": "object",
+          "properties": {
+            "email": { "type": "string" },
+            "password": { "type": "string" },
+            "name": { "type": "string" },
+            "gender": { "type": "string", "enum": ["MALE", "FEMALE", "OTHER"] }
+          },
+          "required": ["email", "password", "name"]
+        },
+        "response": {
+          "status": 201,
+          "body": {
+            "id": { "type": "number" },
+            "email": { "type": "string" },
+            "name": { "type": "string" }
+          }
+        }
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "city_card",
+      "name": "CityCard",
+      "type": "component",
+      "description": "도시 정보 카드",
+      "location": "src/components/CityCard.tsx"
+    },
+    {
+      "id": "review_card",
+      "name": "ReviewCard",
+      "type": "component",
+      "description": "리뷰 카드",
+      "location": "src/components/ReviewCard.tsx"
+    },
+    {
+      "id": "city_filter",
+      "name": "CityFilter",
+      "type": "component",
+      "description": "도시 필터 패널",
+      "location": "src/components/CityFilter.tsx"
+    },
+    {
+      "id": "event_card",
+      "name": "EventCard",
+      "type": "component",
+      "description": "이벤트 카드",
+      "location": "src/components/EventCard.tsx"
+    }
+  ]
+}

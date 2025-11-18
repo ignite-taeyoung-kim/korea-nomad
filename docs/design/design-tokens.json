@@ -1,0 +1,278 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "name": "Korea Nomad Design System",
+    "description": "Korea Nomad 프로젝트의 디자인 토큰 정의",
+    "lastUpdated": "2025-11-18"
+  },
+  "colors": {
+    "primary": {
+      "50": "#f0f9ff",
+      "100": "#e0f2fe",
+      "200": "#bae6fd",
+      "300": "#7dd3fc",
+      "400": "#38bdf8",
+      "500": "#0ea5e9",
+      "600": "#0284c7",
+      "700": "#0369a1",
+      "800": "#075985",
+      "900": "#0c3d66",
+      "token": "primary"
+    },
+    "secondary": {
+      "50": "#f5f3ff",
+      "100": "#ede9fe",
+      "200": "#ddd6fe",
+      "300": "#c4b5fd",
+      "400": "#a78bfa",
+      "500": "#8b5cf6",
+      "600": "#7c3aed",
+      "700": "#6d28d9",
+      "800": "#5b21b6",
+      "900": "#4c1d95",
+      "token": "secondary"
+    },
+    "success": {
+      "50": "#f0fdf4",
+      "500": "#22c55e",
+      "600": "#16a34a",
+      "900": "#15803d",
+      "token": "success"
+    },
+    "warning": {
+      "50": "#fffbeb",
+      "500": "#f59e0b",
+      "600": "#d97706",
+      "900": "#92400e",
+      "token": "warning"
+    },
+    "error": {
+      "50": "#fef2f2",
+      "500": "#ef4444",
+      "600": "#dc2626",
+      "900": "#7f1d1d",
+      "token": "error"
+    },
+    "neutral": {
+      "50": "#f9fafb",
+      "100": "#f3f4f6",
+      "200": "#e5e7eb",
+      "300": "#d1d5db",
+      "400": "#9ca3af",
+      "500": "#6b7280",
+      "600": "#4b5563",
+      "700": "#374151",
+      "800": "#1f2937",
+      "900": "#111827",
+      "token": "neutral"
+    },
+    "background": {
+      "light": "#ffffff",
+      "default": "#f9fafb",
+      "dark": "#f3f4f6",
+      "token": "background"
+    },
+    "text": {
+      "primary": "#111827",
+      "secondary": "#6b7280",
+      "tertiary": "#9ca3af",
+      "inverse": "#ffffff",
+      "token": "text"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "sans": "system-ui, -apple-system, sans-serif",
+      "mono": "Menlo, Consolas, monospace"
+    },
+    "fontSize": {
+      "xs": {
+        "size": "12px",
+        "lineHeight": "16px",
+        "token": "text-xs"
+      },
+      "sm": {
+        "size": "14px",
+        "lineHeight": "20px",
+        "token": "text-sm"
+      },
+      "base": {
+        "size": "16px",
+        "lineHeight": "24px",
+        "token": "text-base"
+      },
+      "lg": {
+        "size": "18px",
+        "lineHeight": "28px",
+        "token": "text-lg"
+      },
+      "xl": {
+        "size": "20px",
+        "lineHeight": "28px",
+        "token": "text-xl"
+      },
+      "2xl": {
+        "size": "24px",
+        "lineHeight": "32px",
+        "token": "text-2xl"
+      },
+      "3xl": {
+        "size": "30px",
+        "lineHeight": "36px",
+        "token": "text-3xl"
+      },
+      "4xl": {
+        "size": "36px",
+        "lineHeight": "40px",
+        "token": "text-4xl"
+      }
+    },
+    "fontWeight": {
+      "light": 300,
+      "normal": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "headings": {
+      "h1": {
+        "size": "36px",
+        "lineHeight": "44px",
+        "weight": 700,
+        "token": "heading-1"
+      },
+      "h2": {
+        "size": "30px",
+        "lineHeight": "36px",
+        "weight": 700,
+        "token": "heading-2"
+      },
+      "h3": {
+        "size": "24px",
+        "lineHeight": "32px",
+        "weight": 600,
+        "token": "heading-3"
+      },
+      "h4": {
+        "size": "20px",
+        "lineHeight": "28px",
+        "weight": 600,
+        "token": "heading-4"
+      },
+      "h5": {
+        "size": "18px",
+        "lineHeight": "28px",
+        "weight": 600,
+        "token": "heading-5"
+      },
+      "h6": {
+        "size": "16px",
+        "lineHeight": "24px",
+        "weight": 600,
+        "token": "heading-6"
+      }
+    }
+  },
+  "spacing": {
+    "0": "0px",
+    "1": "4px",
+    "2": "8px",
+    "3": "12px",
+    "4": "16px",
+    "5": "20px",
+    "6": "24px",
+    "8": "32px",
+    "10": "40px",
+    "12": "48px",
+    "16": "64px",
+    "20": "80px",
+    "24": "96px"
+  },
+  "borderRadius": {
+    "none": "0px",
+    "sm": "4px",
+    "md": "8px",
+    "lg": "12px",
+    "xl": "16px",
+    "2xl": "20px",
+    "3xl": "24px",
+    "full": "9999px"
+  },
+  "shadows": {
+    "none": "none",
+    "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+    "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    "xl": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    "2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+  },
+  "breakpoints": {
+    "mobile": "320px",
+    "tablet": "640px",
+    "desktop": "1024px",
+    "wide": "1280px",
+    "ultrawide": "1536px"
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "backgroundColor": "primary-500",
+        "textColor": "white",
+        "padding": "spacing-2 spacing-4",
+        "borderRadius": "borderRadius-md",
+        "fontSize": "fontSize-base",
+        "fontWeight": "semibold",
+        "shadow": "shadow-md"
+      },
+      "secondary": {
+        "backgroundColor": "neutral-100",
+        "textColor": "primary-600",
+        "padding": "spacing-2 spacing-4",
+        "borderRadius": "borderRadius-md",
+        "fontSize": "fontSize-base",
+        "fontWeight": "semibold",
+        "border": "1px solid neutral-300"
+      },
+      "tertiary": {
+        "backgroundColor": "transparent",
+        "textColor": "primary-600",
+        "padding": "spacing-2 spacing-4",
+        "fontSize": "fontSize-base",
+        "fontWeight": "semibold"
+      }
+    },
+    "card": {
+      "backgroundColor": "background-light",
+      "borderRadius": "borderRadius-lg",
+      "padding": "spacing-4",
+      "shadow": "shadow-sm",
+      "border": "1px solid neutral-200"
+    },
+    "input": {
+      "backgroundColor": "background-light",
+      "borderRadius": "borderRadius-md",
+      "padding": "spacing-2 spacing-3",
+      "fontSize": "fontSize-base",
+      "border": "1px solid neutral-300",
+      "fontFamily": "sans"
+    },
+    "badge": {
+      "padding": "spacing-1 spacing-2",
+      "borderRadius": "borderRadius-full",
+      "fontSize": "fontSize-xs",
+      "fontWeight": "medium"
+    }
+  },
+  "animation": {
+    "duration": {
+      "fast": "150ms",
+      "normal": "300ms",
+      "slow": "500ms"
+    },
+    "easing": {
+      "ease-in": "cubic-bezier(0.4, 0, 1, 1)",
+      "ease-out": "cubic-bezier(0, 0, 0.2, 1)",
+      "ease-in-out": "cubic-bezier(0.4, 0, 0.2, 1)"
+    }
+  }
+}

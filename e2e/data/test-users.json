@@ -1,0 +1,42 @@
+{
+  "validUser": {
+    "id": "test-user-1",
+    "email": "testuser@example.com",
+    "password": "TestPassword123!",
+    "name": "Test User",
+    "bio": "I love traveling to new cities"
+  },
+  "anotherUser": {
+    "id": "test-user-2",
+    "email": "anotheruser@example.com",
+    "password": "TestPassword456!",
+    "name": "Another User",
+    "bio": "Digital nomad exploring Asia"
+  },
+  "premiumUser": {
+    "id": "premium-user-1",
+    "email": "premium@example.com",
+    "password": "PremiumPassword123!",
+    "name": "Premium User",
+    "bio": "Premium subscriber"
+  },
+  "invalidEmails": [
+    "invalid-email",
+    "test@",
+    "@example.com",
+    "test@example",
+    "test space@example.com"
+  ],
+  "validPasswords": [
+    "TestPassword123!",
+    "SecurePass2024@",
+    "MyP@ssw0rd!"
+  ],
+  "weakPasswords": [
+    "123",
+    "password",
+    "qwerty",
+    "111111",
+    "abc123"
+  ]
+}

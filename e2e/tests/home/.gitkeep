@@ -1,0 +1,5 @@
+# Home Page E2E Tests
+# 홈페이지 관련 E2E 테스트 파일들
+# - filters.spec.ts: 필터 기능
+# - cityCard.spec.ts: 도시 카드 상호작용
+# - navigation.spec.ts: 네비게이션

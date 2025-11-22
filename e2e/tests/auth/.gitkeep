@@ -1,0 +1,5 @@
+# Auth E2E Tests
+# 인증 관련 E2E 테스트 파일들이 들어갈 디렉토리
+# - login.spec.ts: 로그인 플로우
+# - signup.spec.ts: 회원가입 플로우
+# - logout.spec.ts: 로그아웃 플로우

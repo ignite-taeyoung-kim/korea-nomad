@@ -1,0 +1,173 @@
+<testsuites id="" name="" tests="6" failures="4" skipped="0" errors="0" time="6.669191">
+<testsuite name="home/simple-test.spec.ts" timestamp="2025-10-30T14:37:10.367Z" hostname="chromium" tests="6" failures="4" skipped="0" time="18.907" errors="0">
+<testcase name="홈페이지 - 기본 테스트 › 홈페이지에 접속 가능한지 확인" classname="home/simple-test.spec.ts" time="1.235">
+</testcase>
+<testcase name="홈페이지 - 기본 테스트 › 페이지 제목이 있는지 확인" classname="home/simple-test.spec.ts" time="2.277">
+<failure message="simple-test.spec.ts:12:7 페이지 제목이 있는지 확인" type="FAILURE">
+<![CDATA[  [chromium] › home/simple-test.spec.ts:12:7 › 홈페이지 - 기본 테스트 › 페이지 제목이 있는지 확인 ──────────────────────
+
+    Error: expect(received).toBeTruthy()
+
+    Received: ""
+
+      16 |
+      17 |     // Assert
+    > 18 |     expect(title).toBeTruthy();
+         |                   ^
+      19 |     console.log('페이지 제목:', title);
+      20 |   });
+      21 |
+        at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:18:19
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../test-results/home-simple-test-홈페이지---기본-테스트-페이지-제목이-있는지-확인-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../../test-results/home-simple-test-홈페이지---기본-테스트-페이지-제목이-있는지-확인-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../test-results/home-simple-test-홈페이지---기본-테스트-페이지-제목이-있는지-확인-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-페이지-제목이-있는지-확인-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-페이지-제목이-있는지-확인-chromium/video.webm]]
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-페이지-제목이-있는지-확인-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="홈페이지 - 기본 테스트 › 페이지에 텍스트 내용이 있는지 확인" classname="home/simple-test.spec.ts" time="1.229">
+</testcase>
+<testcase name="홈페이지 - 기본 테스트 › 요소 개수 확인" classname="home/simple-test.spec.ts" time="5.186">
+<failure message="simple-test.spec.ts:31:7 요소 개수 확인" type="FAILURE">
+<![CDATA[  [chromium] › home/simple-test.spec.ts:31:7 › 홈페이지 - 기본 테스트 › 요소 개수 확인 ────────────────────────────
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      44 |     console.log('link 개수:', linkCount);
+      45 |
+    > 46 |     expect(divCount).toBeGreaterThan(0);
+         |                      ^
+      47 |   });
+      48 |
+      49 |   test('카드 요소 개수 확인', async ({ page }) => {
+        at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:46:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../test-results/home-simple-test-홈페이지---기본-테스트-요소-개수-확인-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../../test-results/home-simple-test-홈페이지---기본-테스트-요소-개수-확인-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../test-results/home-simple-test-홈페이지---기본-테스트-요소-개수-확인-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[div 개수: [33m0[39m
+button 개수: [33m0[39m
+link 개수: [33m0[39m
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-요소-개수-확인-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-요소-개수-확인-chromium/video.webm]]
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-요소-개수-확인-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="홈페이지 - 기본 테스트 › 카드 요소 개수 확인" classname="home/simple-test.spec.ts" time="4.649">
+<failure message="simple-test.spec.ts:49:7 카드 요소 개수 확인" type="FAILURE">
+<![CDATA[  [chromium] › home/simple-test.spec.ts:49:7 › 홈페이지 - 기본 테스트 › 카드 요소 개수 확인 ─────────────────────────
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      64 |
+      65 |     // Assert - 적어도 하나의 선택자가 요소를 찾아야 함
+    > 66 |     expect(cards1 + cards2 + cards3 + cards4).toBeGreaterThan(0);
+         |                                               ^
+      67 |   });
+      68 |
+      69 |   test('네비게이션 존재 확인', async ({ page }) => {
+        at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:66:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../test-results/home-simple-test-홈페이지---기본-테스트-카드-요소-개수-확인-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../../test-results/home-simple-test-홈페이지---기본-테스트-카드-요소-개수-확인-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../test-results/home-simple-test-홈페이지---기본-테스트-카드-요소-개수-확인-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[card 클래스 요소: [33m0[39m
+Card 클래스 요소: [33m0[39m
+article 요소: [33m0[39m
+item 클래스 요소: [33m0[39m
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-카드-요소-개수-확인-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-카드-요소-개수-확인-chromium/video.webm]]
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-카드-요소-개수-확인-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="홈페이지 - 기본 테스트 › 네비게이션 존재 확인" classname="home/simple-test.spec.ts" time="4.331">
+<failure message="simple-test.spec.ts:69:7 네비게이션 존재 확인" type="FAILURE">
+<![CDATA[  [chromium] › home/simple-test.spec.ts:69:7 › 홈페이지 - 기본 테스트 › 네비게이션 존재 확인 ─────────────────────────
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      81 |     console.log('navigation 역할 요소:', nav3);
+      82 |
+    > 83 |     expect(nav1 + nav2 + nav3).toBeGreaterThan(0);
+         |                                ^
+      84 |   });
+      85 | });
+      86 |
+        at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:83:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../test-results/home-simple-test-홈페이지---기본-테스트-네비게이션-존재-확인-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../../test-results/home-simple-test-홈페이지---기본-테스트-네비게이션-존재-확인-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../test-results/home-simple-test-홈페이지---기본-테스트-네비게이션-존재-확인-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[nav 요소: [33m0[39m
+header 요소: [33m0[39m
+navigation 역할 요소: [33m0[39m
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-네비게이션-존재-확인-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-네비게이션-존재-확인-chromium/video.webm]]
+
+[[ATTACHMENT|../../test-results/home-simple-test-홈페이지---기본-테스트-네비게이션-존재-확인-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,565 @@
+{
+  "config": {
+    "configFile": "/Users/taeyoungkim/claude-projects/korea-nomad/playwright.config.ts",
+    "rootDir": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/config/global-setup.ts",
+    "globalTeardown": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/config/global-teardown.ts",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 5
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "./e2e/test-results"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "./e2e/test-results/results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "./e2e/test-results/junit.xml"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 5
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 5,
+    "webServer": {
+      "command": "npm run dev",
+      "port": 3000,
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "home/simple-test.spec.ts",
+      "file": "home/simple-test.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "홈페이지 - 기본 테스트",
+          "file": "home/simple-test.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "홈페이지에 접속 가능한지 확인",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1235,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T14:37:12.336Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c5b0f065458aee768592-904588a37f142db2fa67",
+              "file": "home/simple-test.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "페이지 제목이 있는지 확인",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 2277,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31m\"\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31m\"\"\u001b[39m\n    at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:18:19",
+                        "location": {
+                          "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                          "column": 19,
+                          "line": 18
+                        },
+                        "snippet": "  16 |\n  17 |     // Assert\n> 18 |     expect(title).toBeTruthy();\n     |                   ^\n  19 |     console.log('페이지 제목:', title);\n  20 |   });\n  21 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                            "column": 19,
+                            "line": 18
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31m\"\"\u001b[39m\n\n  16 |\n  17 |     // Assert\n> 18 |     expect(title).toBeTruthy();\n     |                   ^\n  19 |     console.log('페이지 제목:', title);\n  20 |   });\n  21 |\n    at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:18:19"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T14:37:11.624Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-페이지-제목이-있는지-확인-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-페이지-제목이-있는지-확인-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-페이지-제목이-있는지-확인-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                        "column": 19,
+                        "line": 18
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c5b0f065458aee768592-e3763a34b541d1a091f9",
+              "file": "home/simple-test.spec.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "페이지에 텍스트 내용이 있는지 확인",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1229,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T14:37:11.060Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c5b0f065458aee768592-fb8e2f7b047046db969a",
+              "file": "home/simple-test.spec.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "요소 개수 확인",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 5186,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:46:22",
+                        "location": {
+                          "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                          "column": 22,
+                          "line": 46
+                        },
+                        "snippet": "  44 |     console.log('link 개수:', linkCount);\n  45 |\n> 46 |     expect(divCount).toBeGreaterThan(0);\n     |                      ^\n  47 |   });\n  48 |\n  49 |   test('카드 요소 개수 확인', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                            "column": 22,
+                            "line": 46
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  44 |     console.log('link 개수:', linkCount);\n  45 |\n> 46 |     expect(divCount).toBeGreaterThan(0);\n     |                      ^\n  47 |   });\n  48 |\n  49 |   test('카드 요소 개수 확인', async ({ page }) => {\n    at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:46:22"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "div 개수: \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "button 개수: \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "link 개수: \u001b[33m0\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T14:37:11.333Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-요소-개수-확인-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-요소-개수-확인-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-요소-개수-확인-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                        "column": 22,
+                        "line": 46
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c5b0f065458aee768592-0b6ff2619a4820f7e3ba",
+              "file": "home/simple-test.spec.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "카드 요소 개수 확인",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 4649,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:66:47",
+                        "location": {
+                          "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                          "column": 47,
+                          "line": 66
+                        },
+                        "snippet": "  64 |\n  65 |     // Assert - 적어도 하나의 선택자가 요소를 찾아야 함\n> 66 |     expect(cards1 + cards2 + cards3 + cards4).toBeGreaterThan(0);\n     |                                               ^\n  67 |   });\n  68 |\n  69 |   test('네비게이션 존재 확인', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                            "column": 47,
+                            "line": 66
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  64 |\n  65 |     // Assert - 적어도 하나의 선택자가 요소를 찾아야 함\n> 66 |     expect(cards1 + cards2 + cards3 + cards4).toBeGreaterThan(0);\n     |                                               ^\n  67 |   });\n  68 |\n  69 |   test('네비게이션 존재 확인', async ({ page }) => {\n    at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:66:47"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "card 클래스 요소: \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "Card 클래스 요소: \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "article 요소: \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "item 클래스 요소: \u001b[33m0\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T14:37:11.971Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-카드-요소-개수-확인-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-카드-요소-개수-확인-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-카드-요소-개수-확인-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                        "column": 47,
+                        "line": 66
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c5b0f065458aee768592-911602d2e491540f6f0c",
+              "file": "home/simple-test.spec.ts",
+              "line": 49,
+              "column": 7
+            },
+            {
+              "title": "네비게이션 존재 확인",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 4331,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:83:32",
+                        "location": {
+                          "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                          "column": 32,
+                          "line": 83
+                        },
+                        "snippet": "  81 |     console.log('navigation 역할 요소:', nav3);\n  82 |\n> 83 |     expect(nav1 + nav2 + nav3).toBeGreaterThan(0);\n     |                                ^\n  84 |   });\n  85 | });\n  86 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                            "column": 32,
+                            "line": 83
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  81 |     console.log('navigation 역할 요소:', nav3);\n  82 |\n> 83 |     expect(nav1 + nav2 + nav3).toBeGreaterThan(0);\n     |                                ^\n  84 |   });\n  85 | });\n  86 |\n    at /Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts:83:32"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "nav 요소: \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "header 요소: \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "navigation 역할 요소: \u001b[33m0\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-30T14:37:12.635Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-네비게이션-존재-확인-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-네비게이션-존재-확인-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/taeyoungkim/claude-projects/korea-nomad/test-results/home-simple-test-홈페이지---기본-테스트-네비게이션-존재-확인-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/taeyoungkim/claude-projects/korea-nomad/e2e/tests/home/simple-test.spec.ts",
+                        "column": 32,
+                        "line": 83
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c5b0f065458aee768592-b5a0d889c145bc23372a",
+              "file": "home/simple-test.spec.ts",
+              "line": 69,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-10-30T14:37:10.351Z",
+    "duration": 6669.191,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

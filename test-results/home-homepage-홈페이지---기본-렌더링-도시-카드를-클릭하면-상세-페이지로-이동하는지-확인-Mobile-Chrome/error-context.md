@@ -1,0 +1,519 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "🇰🇷" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: 🇰🇷
+      - generic [ref=e7]:
+        - button "로그인" [ref=e8]
+        - button "회원가입" [ref=e9]
+  - main [ref=e10]:
+    - generic [ref=e11]:
+      - generic [ref=e13]:
+        - generic [ref=e14]:
+          - heading "🌍 한국에서 노마드 생활하기 🌍" [level=1] [ref=e15]
+          - paragraph [ref=e16]: 당신에게 맞는 도시를 찾아보세요
+        - generic [ref=e17]:
+          - generic [ref=e18]:
+            - generic [ref=e19]: 💼
+            - paragraph [ref=e20]: 참여 사용자
+            - paragraph [ref=e21]: 38,211
+          - generic [ref=e22]:
+            - generic [ref=e23]: 🏙️
+            - paragraph [ref=e24]: 분석 도시
+            - paragraph [ref=e25]: "47"
+          - generic [ref=e26]:
+            - generic [ref=e27]: ⭐️
+            - paragraph [ref=e28]: 평가된 항목
+            - paragraph [ref=e29]: 1200+
+          - generic [ref=e30]:
+            - generic [ref=e31]: 📝
+            - paragraph [ref=e32]: 작성된 리뷰
+            - paragraph [ref=e33]: 2,450개
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e36]: 예산
+            - button "예산" [ref=e37]:
+              - generic [ref=e38]:
+                - generic [ref=e39]: 💰
+                - generic [ref=e40]: 예산 선택
+              - img [ref=e41]
+          - generic [ref=e43]:
+            - generic [ref=e44]: 지역
+            - button "지역" [ref=e45]:
+              - generic [ref=e46]:
+                - generic [ref=e47]: 📍
+                - generic [ref=e48]: 지역 선택
+              - img [ref=e49]
+          - generic [ref=e51]:
+            - generic [ref=e52]: 환경
+            - button "환경" [ref=e53]:
+              - generic [ref=e54]:
+                - generic [ref=e55]: 🌍
+                - generic [ref=e56]: 환경 선택
+              - img [ref=e57]
+          - generic [ref=e59]:
+            - generic [ref=e60]: 계절
+            - button "계절" [ref=e61]:
+              - generic [ref=e62]:
+                - generic [ref=e63]: 📅
+                - generic [ref=e64]: 계절 선택
+              - img [ref=e65]
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - textbox "도시 검색..." [ref=e69]
+            - img [ref=e70]
+          - button "필터 적용" [ref=e73]:
+            - img [ref=e74]
+            - generic [ref=e76]: 필터 적용
+          - button "검색" [ref=e77]:
+            - img [ref=e78]
+            - generic [ref=e81]: 검색
+        - generic [ref=e82]: "💡 팁: 도시 카드를 클릭하여 상세 정보를 확인하세요"
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - heading "인기 도시 BEST 8" [level=2] [ref=e88]
+          - paragraph [ref=e89]: 노마드들이 가장 선호하는 도시들을 한눈에 비교해보세요
+        - generic [ref=e90]:
+          - 'link "🏖️ 제주 제주특별자치도 8.6/10 💰월 생활비 2.0~3.0M 📶인터넷 속도 400 Mbps 👥현재 노마드 234명 ☕카페 평점 4.9/5 업무: 8.8 삶의질: 9.2 189개 리뷰 367 8 상세 보기" [ref=e91] [cursor=pointer]':
+            - /url: /cities/6
+            - generic [ref=e92]:
+              - generic [ref=e93]:
+                - generic [ref=e95]: 🏖️
+                - heading "제주" [level=3] [ref=e96]
+                - paragraph [ref=e97]: 제주특별자치도
+              - generic [ref=e99]:
+                - img [ref=e100]
+                - generic [ref=e102]: 8.6/10
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - generic [ref=e105]: 💰월 생활비
+                  - generic [ref=e106]: 2.0~3.0M
+                - generic [ref=e107]:
+                  - generic [ref=e108]: 📶인터넷 속도
+                  - generic [ref=e109]: 400 Mbps
+                - generic [ref=e110]:
+                  - generic [ref=e111]: 👥현재 노마드
+                  - generic [ref=e112]: 234명
+                - generic [ref=e113]:
+                  - generic [ref=e114]: ☕카페 평점
+                  - generic [ref=e115]: 4.9/5
+              - generic [ref=e116]:
+                - generic [ref=e118]:
+                  - img [ref=e119]
+                  - text: "업무: 8.8"
+                - generic [ref=e124]:
+                  - img [ref=e125]
+                  - text: "삶의질: 9.2"
+              - generic [ref=e130]:
+                - img [ref=e131]
+                - generic [ref=e133]: 189개 리뷰
+              - generic [ref=e134]:
+                - button "367" [ref=e135]:
+                  - img [ref=e136]
+                  - generic [ref=e138]: "367"
+                - button "8" [ref=e139]:
+                  - generic [ref=e140]: "8"
+                  - img [ref=e141]
+              - generic [ref=e143]:
+                - generic [ref=e144]: 상세 보기
+                - img [ref=e145]
+          - 'link "🏙️ 서울 서울특별시 8.5/10 💰월 생활비 2.1~3M 📶인터넷 속도 950 Mbps 👥현재 노마드 524명 ☕카페 평점 4.7/5 업무: 9.5 삶의질: 8.3 245개 리뷰 342 28 상세 보기" [ref=e147] [cursor=pointer]':
+            - /url: /cities/1
+            - generic [ref=e148]:
+              - generic [ref=e149]:
+                - generic [ref=e151]: 🏙️
+                - heading "서울" [level=3] [ref=e152]
+                - paragraph [ref=e153]: 서울특별시
+              - generic [ref=e155]:
+                - img [ref=e156]
+                - generic [ref=e158]: 8.5/10
+              - generic [ref=e159]:
+                - generic [ref=e160]:
+                  - generic [ref=e161]: 💰월 생활비
+                  - generic [ref=e162]: 2.1~3M
+                - generic [ref=e163]:
+                  - generic [ref=e164]: 📶인터넷 속도
+                  - generic [ref=e165]: 950 Mbps
+                - generic [ref=e166]:
+                  - generic [ref=e167]: 👥현재 노마드
+                  - generic [ref=e168]: 524명
+                - generic [ref=e169]:
+                  - generic [ref=e170]: ☕카페 평점
+                  - generic [ref=e171]: 4.7/5
+              - generic [ref=e172]:
+                - generic [ref=e174]:
+                  - img [ref=e175]
+                  - text: "업무: 9.5"
+                - generic [ref=e180]:
+                  - img [ref=e181]
+                  - text: "삶의질: 8.3"
+              - generic [ref=e186]:
+                - img [ref=e187]
+                - generic [ref=e189]: 245개 리뷰
+              - generic [ref=e190]:
+                - button "342" [ref=e191]:
+                  - img [ref=e192]
+                  - generic [ref=e194]: "342"
+                - button "28" [ref=e195]:
+                  - generic [ref=e196]: "28"
+                  - img [ref=e197]
+              - generic [ref=e199]:
+                - generic [ref=e200]: 상세 보기
+                - img [ref=e201]
+          - 'link "🏔️ 강릉 강원도 8.3/10 💰월 생활비 1.2~1.8M 📶인터넷 속도 200 Mbps 👥현재 노마드 189명 ☕카페 평점 4.6/5 업무: 7.8 삶의질: 8.9 156개 리뷰 287 19 상세 보기" [ref=e203] [cursor=pointer]':
+            - /url: /cities/2
+            - generic [ref=e204]:
+              - generic [ref=e205]:
+                - generic [ref=e207]: 🏔️
+                - heading "강릉" [level=3] [ref=e208]
+                - paragraph [ref=e209]: 강원도
+              - generic [ref=e211]:
+                - img [ref=e212]
+                - generic [ref=e214]: 8.3/10
+              - generic [ref=e215]:
+                - generic [ref=e216]:
+                  - generic [ref=e217]: 💰월 생활비
+                  - generic [ref=e218]: 1.2~1.8M
+                - generic [ref=e219]:
+                  - generic [ref=e220]: 📶인터넷 속도
+                  - generic [ref=e221]: 200 Mbps
+                - generic [ref=e222]:
+                  - generic [ref=e223]: 👥현재 노마드
+                  - generic [ref=e224]: 189명
+                - generic [ref=e225]:
+                  - generic [ref=e226]: ☕카페 평점
+                  - generic [ref=e227]: 4.6/5
+              - generic [ref=e228]:
+                - generic [ref=e230]:
+                  - img [ref=e231]
+                  - text: "업무: 7.8"
+                - generic [ref=e236]:
+                  - img [ref=e237]
+                  - text: "삶의질: 8.9"
+              - generic [ref=e242]:
+                - img [ref=e243]
+                - generic [ref=e245]: 156개 리뷰
+              - generic [ref=e246]:
+                - button "287" [ref=e247]:
+                  - img [ref=e248]
+                  - generic [ref=e250]: "287"
+                - button "19" [ref=e251]:
+                  - generic [ref=e252]: "19"
+                  - img [ref=e253]
+              - generic [ref=e255]:
+                - generic [ref=e256]: 상세 보기
+                - img [ref=e257]
+          - 'link "🏯 전주 전라북도 8.1/10 💰월 생활비 1.4~2M 📶인터넷 속도 250 Mbps 👥현재 노마드 142명 ☕카페 평점 4.8/5 업무: 7.5 삶의질: 8.7 128개 리뷰 256 12 상세 보기" [ref=e259] [cursor=pointer]':
+            - /url: /cities/3
+            - generic [ref=e260]:
+              - generic [ref=e261]:
+                - generic [ref=e263]: 🏯
+                - heading "전주" [level=3] [ref=e264]
+                - paragraph [ref=e265]: 전라북도
+              - generic [ref=e267]:
+                - img [ref=e268]
+                - generic [ref=e270]: 8.1/10
+              - generic [ref=e271]:
+                - generic [ref=e272]:
+                  - generic [ref=e273]: 💰월 생활비
+                  - generic [ref=e274]: 1.4~2M
+                - generic [ref=e275]:
+                  - generic [ref=e276]: 📶인터넷 속도
+                  - generic [ref=e277]: 250 Mbps
+                - generic [ref=e278]:
+                  - generic [ref=e279]: 👥현재 노마드
+                  - generic [ref=e280]: 142명
+                - generic [ref=e281]:
+                  - generic [ref=e282]: ☕카페 평점
+                  - generic [ref=e283]: 4.8/5
+              - generic [ref=e284]:
+                - generic [ref=e286]:
+                  - img [ref=e287]
+                  - text: "업무: 7.5"
+                - generic [ref=e292]:
+                  - img [ref=e293]
+                  - text: "삶의질: 8.7"
+              - generic [ref=e298]:
+                - img [ref=e299]
+                - generic [ref=e301]: 128개 리뷰
+              - generic [ref=e302]:
+                - button "256" [ref=e303]:
+                  - img [ref=e304]
+                  - generic [ref=e306]: "256"
+                - button "12" [ref=e307]:
+                  - generic [ref=e308]: "12"
+                  - img [ref=e309]
+              - generic [ref=e311]:
+                - generic [ref=e312]: 상세 보기
+                - img [ref=e313]
+          - 'link "🌊 부산 부산광역시 8/10 💰월 생활비 1.5~2.2M 📶인터넷 속도 300 Mbps 👥현재 노마드 267명 ☕카페 평점 4.5/5 업무: 8.2 삶의질: 8.1 198개 리뷰 312 15 상세 보기" [ref=e315] [cursor=pointer]':
+            - /url: /cities/4
+            - generic [ref=e316]:
+              - generic [ref=e317]:
+                - generic [ref=e319]: 🌊
+                - heading "부산" [level=3] [ref=e320]
+                - paragraph [ref=e321]: 부산광역시
+              - generic [ref=e323]:
+                - img [ref=e324]
+                - generic [ref=e326]: 8/10
+              - generic [ref=e327]:
+                - generic [ref=e328]:
+                  - generic [ref=e329]: 💰월 생활비
+                  - generic [ref=e330]: 1.5~2.2M
+                - generic [ref=e331]:
+                  - generic [ref=e332]: 📶인터넷 속도
+                  - generic [ref=e333]: 300 Mbps
+                - generic [ref=e334]:
+                  - generic [ref=e335]: 👥현재 노마드
+                  - generic [ref=e336]: 267명
+                - generic [ref=e337]:
+                  - generic [ref=e338]: ☕카페 평점
+                  - generic [ref=e339]: 4.5/5
+              - generic [ref=e340]:
+                - generic [ref=e342]:
+                  - img [ref=e343]
+                  - text: "업무: 8.2"
+                - generic [ref=e348]:
+                  - img [ref=e349]
+                  - text: "삶의질: 8.1"
+              - generic [ref=e354]:
+                - img [ref=e355]
+                - generic [ref=e357]: 198개 리뷰
+              - generic [ref=e358]:
+                - button "312" [ref=e359]:
+                  - img [ref=e360]
+                  - generic [ref=e362]: "312"
+                - button "15" [ref=e363]:
+                  - generic [ref=e364]: "15"
+                  - img [ref=e365]
+              - generic [ref=e367]:
+                - generic [ref=e368]: 상세 보기
+                - img [ref=e369]
+          - 'link "🏪 대구 대구광역시 7.8/10 💰월 생활비 1.0~1.5M 📶인터넷 속도 320 Mbps 👥현재 노마드 156명 ☕카페 평점 4.2/5 업무: 7.6 삶의질: 8 142개 리뷰 218 10 상세 보기" [ref=e371] [cursor=pointer]':
+            - /url: /cities/5
+            - generic [ref=e372]:
+              - generic [ref=e373]:
+                - generic [ref=e375]: 🏪
+                - heading "대구" [level=3] [ref=e376]
+                - paragraph [ref=e377]: 대구광역시
+              - generic [ref=e379]:
+                - img [ref=e380]
+                - generic [ref=e382]: 7.8/10
+              - generic [ref=e383]:
+                - generic [ref=e384]:
+                  - generic [ref=e385]: 💰월 생활비
+                  - generic [ref=e386]: 1.0~1.5M
+                - generic [ref=e387]:
+                  - generic [ref=e388]: 📶인터넷 속도
+                  - generic [ref=e389]: 320 Mbps
+                - generic [ref=e390]:
+                  - generic [ref=e391]: 👥현재 노마드
+                  - generic [ref=e392]: 156명
+                - generic [ref=e393]:
+                  - generic [ref=e394]: ☕카페 평점
+                  - generic [ref=e395]: 4.2/5
+              - generic [ref=e396]:
+                - generic [ref=e398]:
+                  - img [ref=e399]
+                  - text: "업무: 7.6"
+                - generic [ref=e404]:
+                  - img [ref=e405]
+                  - text: "삶의질: 8"
+              - generic [ref=e410]:
+                - img [ref=e411]
+                - generic [ref=e413]: 142개 리뷰
+              - generic [ref=e414]:
+                - button "218" [ref=e415]:
+                  - img [ref=e416]
+                  - generic [ref=e418]: "218"
+                - button "10" [ref=e419]:
+                  - generic [ref=e420]: "10"
+                  - img [ref=e421]
+              - generic [ref=e423]:
+                - generic [ref=e424]: 상세 보기
+                - img [ref=e425]
+          - 'link "🏙️ 광주 광주광역시 7.6/10 💰월 생활비 1.1~1.6M 📶인터넷 속도 280 Mbps 👥현재 노마드 73명 ☕카페 평점 4.3/5 업무: 7 삶의질: 8.2 68개 리뷰 142 9 상세 보기" [ref=e427] [cursor=pointer]':
+            - /url: /cities/7
+            - generic [ref=e428]:
+              - generic [ref=e429]:
+                - generic [ref=e431]: 🏙️
+                - heading "광주" [level=3] [ref=e432]
+                - paragraph [ref=e433]: 광주광역시
+              - generic [ref=e435]:
+                - img [ref=e436]
+                - generic [ref=e438]: 7.6/10
+              - generic [ref=e439]:
+                - generic [ref=e440]:
+                  - generic [ref=e441]: 💰월 생활비
+                  - generic [ref=e442]: 1.1~1.6M
+                - generic [ref=e443]:
+                  - generic [ref=e444]: 📶인터넷 속도
+                  - generic [ref=e445]: 280 Mbps
+                - generic [ref=e446]:
+                  - generic [ref=e447]: 👥현재 노마드
+                  - generic [ref=e448]: 73명
+                - generic [ref=e449]:
+                  - generic [ref=e450]: ☕카페 평점
+                  - generic [ref=e451]: 4.3/5
+              - generic [ref=e452]:
+                - generic [ref=e454]:
+                  - img [ref=e455]
+                  - text: "업무: 7"
+                - generic [ref=e460]:
+                  - img [ref=e461]
+                  - text: "삶의질: 8.2"
+              - generic [ref=e466]:
+                - img [ref=e467]
+                - generic [ref=e469]: 68개 리뷰
+              - generic [ref=e470]:
+                - button "142" [ref=e471]:
+                  - img [ref=e472]
+                  - generic [ref=e474]: "142"
+                - button "9" [ref=e475]:
+                  - generic [ref=e476]: "9"
+                  - img [ref=e477]
+              - generic [ref=e479]:
+                - generic [ref=e480]: 상세 보기
+                - img [ref=e481]
+          - 'link "🌆 대전 대전광역시 7.5/10 💰월 생활비 1.3~1.8M 📶인터넷 속도 350 Mbps 👥현재 노마드 85명 ☕카페 평점 4.2/5 업무: 7.3 삶의질: 7.9 75개 리뷰 156 11 상세 보기" [ref=e483] [cursor=pointer]':
+            - /url: /cities/8
+            - generic [ref=e484]:
+              - generic [ref=e485]:
+                - generic [ref=e487]: 🌆
+                - heading "대전" [level=3] [ref=e488]
+                - paragraph [ref=e489]: 대전광역시
+              - generic [ref=e491]:
+                - img [ref=e492]
+                - generic [ref=e494]: 7.5/10
+              - generic [ref=e495]:
+                - generic [ref=e496]:
+                  - generic [ref=e497]: 💰월 생활비
+                  - generic [ref=e498]: 1.3~1.8M
+                - generic [ref=e499]:
+                  - generic [ref=e500]: 📶인터넷 속도
+                  - generic [ref=e501]: 350 Mbps
+                - generic [ref=e502]:
+                  - generic [ref=e503]: 👥현재 노마드
+                  - generic [ref=e504]: 85명
+                - generic [ref=e505]:
+                  - generic [ref=e506]: ☕카페 평점
+                  - generic [ref=e507]: 4.2/5
+              - generic [ref=e508]:
+                - generic [ref=e510]:
+                  - img [ref=e511]
+                  - text: "업무: 7.3"
+                - generic [ref=e516]:
+                  - img [ref=e517]
+                  - text: "삶의질: 7.9"
+              - generic [ref=e522]:
+                - img [ref=e523]
+                - generic [ref=e525]: 75개 리뷰
+              - generic [ref=e526]:
+                - button "156" [ref=e527]:
+                  - img [ref=e528]
+                  - generic [ref=e530]: "156"
+                - button "11" [ref=e531]:
+                  - generic [ref=e532]: "11"
+                  - img [ref=e533]
+              - generic [ref=e535]:
+                - generic [ref=e536]: 상세 보기
+                - img [ref=e537]
+        - button "모든 도시 보기 (8개)" [ref=e540]
+      - generic [ref=e542]:
+        - generic [ref=e543]:
+          - heading "🌟 한국 노마드 커뮤니티 참여하기 🌟" [level=2] [ref=e544]
+          - paragraph [ref=e545]: 리뷰를 남기고, 도시를 비교하고, 다른 노마드들과 연결되세요
+        - generic [ref=e546]:
+          - generic [ref=e547]:
+            - generic [ref=e548]: 이메일
+            - generic [ref=e549]:
+              - textbox "your@email.com" [ref=e550]
+              - img [ref=e551]
+          - generic [ref=e554]:
+            - generic [ref=e555]: 성별
+            - combobox [ref=e556]:
+              - option "선택해주세요" [selected]
+              - option "남성"
+              - option "여성"
+              - option "기타"
+          - generic [ref=e557]:
+            - checkbox "이용약관 및 개인정보처리방침에 동의합니다" [ref=e558]
+            - generic [ref=e559]: 이용약관 및 개인정보처리방침에 동의합니다
+          - button "🚀 지금 시작하기" [disabled] [ref=e560]:
+            - img [ref=e561]
+            - generic [ref=e566]: 🚀 지금 시작하기
+          - paragraph [ref=e567]: 이미 계정이 있다면 자동으로 로그인됩니다
+        - generic [ref=e568]:
+          - generic [ref=e569]:
+            - generic [ref=e570]: ✅
+            - generic [ref=e571]: 가입은 무료입니다
+          - generic [ref=e572]:
+            - generic [ref=e573]: 🔒
+            - generic [ref=e574]: 데이터는 안전하게 보호됩니다
+  - contentinfo [ref=e575]:
+    - generic [ref=e576]:
+      - generic [ref=e577]:
+        - generic [ref=e578]:
+          - generic [ref=e579]:
+            - generic [ref=e580]: 🇰🇷
+            - generic [ref=e581]: 한국 노마드
+          - paragraph [ref=e582]: 한국에서 노마드 생활을 위한 모든 정보를 한곳에서 제공합니다.
+        - generic [ref=e583]:
+          - heading "서비스" [level=3] [ref=e584]
+          - list [ref=e585]:
+            - listitem [ref=e586]:
+              - link "홈" [ref=e587] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e588]:
+              - link "도시 검색" [ref=e589] [cursor=pointer]:
+                - /url: /cities
+            - listitem [ref=e590]:
+              - link "커뮤니티" [ref=e591] [cursor=pointer]:
+                - /url: /community
+            - listitem [ref=e592]:
+              - link "가이드" [ref=e593] [cursor=pointer]:
+                - /url: /guide
+        - generic [ref=e594]:
+          - heading "정보" [level=3] [ref=e595]
+          - list [ref=e596]:
+            - listitem [ref=e597]:
+              - link "이용약관" [ref=e598] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e599]:
+              - link "개인정보처리방침" [ref=e600] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e601]:
+              - link "연락처" [ref=e602] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e603]:
+              - link "FAQ" [ref=e604] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e605]:
+          - heading "연락처" [level=3] [ref=e606]
+          - list [ref=e607]:
+            - listitem [ref=e608]:
+              - img [ref=e609]
+              - link "contact@koreannomads.com" [ref=e612] [cursor=pointer]:
+                - /url: mailto:contact@koreannomads.com
+            - listitem [ref=e613]:
+              - img [ref=e614]
+              - generic [ref=e617]: Seoul, Korea
+      - generic [ref=e619]:
+        - paragraph [ref=e620]: © 2025 Korean Nomad Cities. All rights reserved.
+        - generic [ref=e621]:
+          - link "이용약관" [ref=e622] [cursor=pointer]:
+            - /url: "#"
+          - generic [ref=e623]: "|"
+          - link "개인정보" [ref=e624] [cursor=pointer]:
+            - /url: "#"
+          - generic [ref=e625]: "|"
+          - link "문의" [ref=e626] [cursor=pointer]:
+            - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=e632] [cursor=pointer]:
+    - img [ref=e633]
+  - alert [ref=e636]: 🌍 한국에서 노마드 생활하기 🌍
+```

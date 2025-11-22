@@ -1,0 +1,58 @@
+{
+  "cities": [
+    {
+      "id": "seoul",
+      "name": "서울",
+      "province": "서울특별시",
+      "score": 8.5,
+      "costPerMonth": "2.5~3.5M",
+      "internetSpeed": 950
+    },
+    {
+      "id": "gangneung",
+      "name": "강릉",
+      "province": "강원도",
+      "score": 7.8,
+      "costPerMonth": "1.8~2.5M",
+      "internetSpeed": 850
+    },
+    {
+      "id": "jeonju",
+      "name": "전주",
+      "province": "전라북도",
+      "score": 7.5,
+      "costPerMonth": "1.8~2.3M",
+      "internetSpeed": 820
+    },
+    {
+      "id": "busan",
+      "name": "부산",
+      "province": "부산광역시",
+      "score": 8.0,
+      "costPerMonth": "2.2~3.0M",
+      "internetSpeed": 920
+    },
+    {
+      "id": "daegu",
+      "name": "대구",
+      "province": "대구광역시",
+      "score": 7.2,
+      "costPerMonth": "1.8~2.2M",
+      "internetSpeed": 800
+    }
+  ],
+  "filterScenarios": {
+    "lowCost": {
+      "maxCost": "2M",
+      "expectedCities": ["gangneung", "jeonju", "daegu"]
+    },
+    "highSpeed": {
+      "minSpeed": 900,
+      "expectedCities": ["seoul", "busan"]
+    },
+    "bestQuality": {
+      "minScore": 8.0,
+      "expectedCities": ["seoul", "busan"]
+    }
+  }
+}

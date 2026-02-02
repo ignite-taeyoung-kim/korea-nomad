@@ -30,10 +30,16 @@ export async function signup(formData: FormData) {
     password: formData.get('password') as string,
   }
 
-  const { error } = await supabase.auth.signUp(data)
+  const { error, data: authData } = await supabase.auth.signUp(data)
 
   if (error) {
-    redirect('/auth/error')
+    console.error('Signup error:', error)
+    redirect(`/auth/error?message=${encodeURIComponent(error.message)}`)
+  }
+
+  // 이메일 확인이 필요한 경우
+  if (authData?.user && !authData.user.confirmed_at) {
+    redirect(`/auth/error?message=${encodeURIComponent('회원가입이 완료되었습니다. 이메일을 확인해 주세요.')}`)
   }
 
   revalidatePath('/', 'layout')

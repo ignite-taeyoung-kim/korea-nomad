@@ -7,17 +7,22 @@ const supabase = createClient()
  * Cities 관련 쿼리
  */
 export async function fetchCities() {
-  const { data, error } = await supabase
-    .from('cities')
-    .select('*')
-    .order('overall_score', { ascending: false })
+  try {
+    const { data, error } = await supabase
+      .from('cities')
+      .select('*')
+      .order('overall_score', { ascending: false })
 
-  if (error) {
-    console.error('도시 데이터 조회 오류:', error)
+    if (error) {
+      console.error('도시 데이터 조회 오류:', error.message)
+      return []
+    }
+
+    return data as City[]
+  } catch (err) {
+    console.error('도시 데이터 조회 중 에러:', err instanceof Error ? err.message : err)
     return []
   }
-
-  return data as City[]
 }
 
 export async function fetchCityById(id: string) {

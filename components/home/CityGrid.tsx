@@ -1,8 +1,55 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import { fetchCities } from '@/lib/supabase/queries'
 import CityCard from './CityCard'
+import type { City } from '@/lib/types'
 
-export default async function CityGrid() {
-  const cities = await fetchCities()
+export default function CityGrid() {
+  const [cities, setCities] = useState<City[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const loadCities = async () => {
+      try {
+        setIsLoading(true)
+        setError(null)
+        const data = await fetchCities()
+        setCities(data || [])
+        if (!data || data.length === 0) {
+          setError(null)
+        }
+      } catch (err) {
+        console.error('Failed to fetch cities:', err)
+        setError('도시 정보를 불러오지 못했습니다.')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadCities()
+  }, [])
+
+  if (isLoading) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-center text-gray-600">
+          도시 정보를 불러오는 중...
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-center text-red-600">
+          {error}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
